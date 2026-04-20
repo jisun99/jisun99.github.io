@@ -8,22 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!--
-    KR 해석:
-    industrial-quality-inspection.html 상세 페이지입니다.
-    최근 프로젝트 상세 페이지와 동일한 레이아웃을 유지하며 작성했습니다.
-
-    저장 경로 예시:
-    - projects/industrial-quality-inspection.html
-
-    이미지 경로 예시:
-    - ../assets/projects/project-01.jpg
-
-    주의:
-    - 사내 프로젝트이므로 내부 공정, 성능 수치, 세부 시스템명 등은 과도하게 드러내지 않는 수준으로 작성했습니다.
-    - 추후 공개 가능한 범위에 맞춰 내용과 이미지를 보완하면 됩니다.
-  -->
-
   <style>
     :root {
       --bg: #f5f6f5;
@@ -177,11 +161,12 @@
 
     .hero-image {
       width: 100%;
-      aspect-ratio: 16 / 8;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       border-radius: 20px;
       border: 1px solid var(--line);
-      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      background: #ffffff;
+      padding: 10px;
       margin-top: 26px;
     }
 
@@ -309,70 +294,56 @@
           </div>
           <a class="primary-btn" href="../index.html#projects" style="margin-left: auto; flex: 0 0 auto;">Back to Projects</a>
         </div>
+
         <div class="chip-list" style="margin-bottom: 4px;">
-          <span class="chip">Industrial Vision AI</span>
-          <span class="chip">Quality Inspection</span>
-          <span class="chip">Practical Deployment</span>
+          <span class="chip">Ship Painting Inspection</span>
+          <span class="chip">Object Detection</span>
+          <span class="chip">SLAM</span>
+          <span class="chip">3D Localization</span>
+          <span class="chip">System Integration</span>
         </div>
 
-        <h1 class="project-title">In-house Vision AI Project for Industrial Quality Inspection</h1>
+        <h1 class="project-title">Development of an AI-based Agent for Ship Painting Quality Inspection</h1>
         <p class="project-meta">Industrial Vision AI Project <span style="margin-left: 10px;">2026.01 – Present</span></p>
         <p class="project-desc">
-          This project focuses on developing Vision AI for industrial quality inspection in real-world environments. It emphasizes robust perception, practical applicability, and reliable deployment-oriented workflows for industrial inspection tasks.
+          This project focuses on developing an AI-based agent for ship painting quality inspection. It combines object detection-based defect inspection across diverse ship hull blocks with SLAM-based localization for defect position estimation, while also building the connected database, server, and application infrastructure required for practical in-house use.
         </p>
 
-        <!--
-          KR 해석:
-          이 프로젝트는 실제 산업 환경에서의 품질 검사를 위한 Vision AI 개발에 초점을 두고 있습니다.
-          강인한 인식 성능, 실용적 적용 가능성, 그리고 배포를 고려한 안정적인 워크플로우 구축이 핵심입니다.
-        -->
-
-        <img class="hero-image" src="../assets/projects/project-01.png" alt="Industrial quality inspection Vision AI project image" />
+        <img class="hero-image" src="../assets/projects/project-01.png" alt="Ship painting quality inspection AI project image" />
       </div>
 
       <div class="content-grid" id="details">
         <div class="content-card">
           <h2 class="section-title">Project Overview</h2>
           <p>
-            The purpose of this project is to build Vision AI models that can support industrial quality inspection under practical conditions. Rather than focusing only on model accuracy, the project also requires careful consideration of robustness, usability, and how the perception pipeline fits into real operational settings.
+            This project is an advanced in-house Vision AI initiative for ship painting quality inspection. Its main objective is not only to detect coating defects from images, but also to support more practical inspection workflows by handling diverse ship hull blocks and estimating the spatial location of detected defects.
           </p>
           <p>
-            Through this work, I have been expanding my understanding of industrial AI development, especially in contexts where computer vision models need to be dependable, adaptable, and relevant to real inspection workflows.
+            To achieve this, the project combines object detection-based defect recognition with SLAM-based localization. In addition, it includes the development of the supporting database, server, and program infrastructure connected to an in-house worker app, enabling the system to function as a more integrated inspection platform rather than as a standalone AI model.
           </p>
-
-          <!--
-            KR 해석:
-            이 프로젝트의 목적은 실제 환경에서 산업 품질 검사를 지원할 수 있는 Vision AI 모델을 구축하는 것입니다.
-            단순한 정확도뿐 아니라 강인성, 사용성, 그리고 실제 운영 환경에 맞는 인식 파이프라인 구성이 함께 중요합니다.
-            이를 통해 산업 AI 개발과 실제 검사 워크플로우에 적합한 computer vision 시스템에 대한 이해를 넓히고 있습니다.
-          -->
 
           <h2 class="section-title" style="margin-top: 34px;">What I Worked On</h2>
           <ul>
-            <li>Worked on Vision AI development for industrial quality inspection tasks</li>
-            <li>Focused on building robust and practical perception workflows</li>
-            <li>Studied how computer vision models can be applied more effectively in real environments</li>
-            <li>Built experience in connecting model development with deployment-oriented considerations</li>
+            <li>Developed object detection-based models for defect inspection in ship painting environments</li>
+            <li>Worked on defect detection across diverse ship hull blocks under practical field conditions</li>
+            <li>Integrated SLAM to estimate and manage the spatial location of detected defects</li>
+            <li>Built connected system components including database, server, and application-linked programs for in-house worker usage</li>
+            <li>Contributed to shaping the project as an integrated inspection agent rather than a model-only solution</li>
           </ul>
 
-          <!--
-            KR 해석:
-            - 산업 품질 검사 과제를 위한 Vision AI 개발 수행
-            - 강인하고 실용적인 인식 워크플로우 구축에 집중
-            - 실제 환경에서 computer vision 모델이 효과적으로 적용되는 방식 탐색
-            - 모델 개발과 배포 고려사항을 연결하는 경험 축적
-          -->
+          <h2 class="section-title" style="margin-top: 34px;">Key Focus</h2>
+          <ul>
+            <li>Defect detection using object detection models</li>
+            <li>Inspection support across multiple ship hull block environments</li>
+            <li>SLAM-based defect localization and position estimation</li>
+            <li>Integration of AI models with database, server, and worker-facing applications</li>
+            <li>Practical system design for real industrial deployment</li>
+          </ul>
 
           <h2 class="section-title" style="margin-top: 34px;">Outcome</h2>
           <p>
-            This project has helped me deepen my perspective on practical Vision AI development in industrial settings. It continues to strengthen my ability to think beyond isolated model performance and toward complete, reliable systems that can operate in real environments.
+            This project has strengthened my ability to design Vision AI systems as deployable industrial solutions rather than isolated models. Through combining defect recognition, localization, and application-linked infrastructure, I have been building experience in end-to-end AI system development for practical shipbuilding environments.
           </p>
-
-          <!--
-            KR 해석:
-            이 프로젝트는 산업 환경에서의 실용적 Vision AI 개발에 대한 관점을 더욱 깊게 만들어 주었습니다.
-            단일 모델 성능을 넘어서, 실제 환경에서 동작 가능한 완전한 시스템 관점으로 사고하는 능력을 강화하고 있습니다.
-          -->
         </div>
 
         <aside class="summary-card">
@@ -384,35 +355,39 @@
           <div class="summary-block">
             <span class="small-label">Keywords</span>
             <div class="chip-list">
-              <span class="chip">Industrial Inspection</span>
-              <span class="chip">Vision AI</span>
-              <span class="chip">Practical Deployment</span>
-              <span class="chip">Perception Pipeline</span>
+              <span class="chip">Object Detection</span>
+              <span class="chip">Ship Painting</span>
+              <span class="chip">SLAM</span>
+              <span class="chip">3D Localization</span>
+              <span class="chip">Database</span>
+              <span class="chip">Server</span>
+              <span class="chip">App Integration</span>
             </div>
           </div>
 
           <div class="summary-block">
             <span class="small-label">Focus</span>
             <ul>
-              <li>Robust perception in real environments</li>
-              <li>Practical industrial workflow understanding</li>
-              <li>Deployment-oriented AI development</li>
-              <li>Reliable inspection support systems</li>
+              <li>Defect inspection across diverse ship hull blocks</li>
+              <li>SLAM-based defect position estimation</li>
+              <li>Integrated AI inspection agent development</li>
+              <li>Application-linked system infrastructure</li>
             </ul>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">System Scope</span>
+            <p>
+              This project covers not only AI model development but also the supporting infrastructure required for practical internal use, including database, server, and worker-facing program integration.
+            </p>
           </div>
 
           <div class="summary-block">
             <span class="small-label">Project Note</span>
             <p>
-              This page follows the same structure as the other project detail pages and is intentionally written at a high level to remain appropriate for a public portfolio.
+              This page is intentionally written at a high level for portfolio use while preserving the project’s core technical direction and system-level contribution.
             </p>
           </div>
-
-          <!--
-            KR 해석:
-            오른쪽 요약 카드에는 역할, 키워드, 핵심 초점, 메모 등을 정리했습니다.
-            공개 포트폴리오에 적합하도록 세부 내부 정보는 드러내지 않는 수준에서 작성했습니다.
-          -->
         </aside>
       </div>
     </div>
