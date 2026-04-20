@@ -571,13 +571,10 @@
       <a class="brand" href="#top">Jisun Byun</a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about">About</a>
-        <a href="#research">Research</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
+        </nav>
     </div>
   </div>
 
@@ -672,14 +669,13 @@
 
         <div class="card">
           <h3>Research Focus</h3>
-          <ul>
-            <li>2D object detection for practical industrial environments</li>
-            <li>3D point cloud processing and geometric understanding</li>
-            <li>Human landmark detection on 3D human scan data</li>
-            <li>Deep learning for robust Vision AI systems</li>
-            <li>Computer vision for real-world and Physical AI applications</li>
-          </ul>
-          <!-- KR 해석: Research 내용을 간결하게 정리하여 About 오른쪽 카드에 배치했습니다. -->
+          <div class="chip-list" aria-label="Research focus" style="margin-top: 14px;">
+            <span class="chip">2D Object Detection</span>
+            <span class="chip">3D Point Cloud Processing</span>
+            <span class="chip">Human Landmark Detection</span>
+            <span class="chip">Vision AI Systems</span>
+          </div>
+          <!-- KR 해석: Research 섹션의 제목들만 About 오른쪽 카드에 chip 형태로 배치했습니다. -->
         </div>
       </div>
     </div>
@@ -692,45 +688,7 @@
     - 사용자의 관심 분야를 카드 형태로 나열
     - 시각적으로 한눈에 전문 분야를 보여주기 위함
   -->
-  <section class="section" id="research">
-    <div class="container">
-      <h2 class="section-title">Research</h2>
-
-      <div class="research-grid">
-        <article class="card research-card">
-          <h3>2D Object Detection</h3>
-          <p>
-            Developing robust object detection models for practical industrial environments.
-          </p>
-          <!-- KR 해석: 실제 산업 환경을 위한 강인한 object detection 모델 개발에 관심이 있습니다. -->
-        </article>
-
-        <article class="card research-card">
-          <h3>3D Point Cloud Processing</h3>
-          <p>
-            Studying representation learning and geometric analysis for 3D human data.
-          </p>
-          <!-- KR 해석: 3D 인체 데이터에 대한 표현 학습과 기하 분석을 연구합니다. -->
-        </article>
-
-        <article class="card research-card">
-          <h3>Human Landmark Detection</h3>
-          <p>
-            Exploring deep learning-based methods for precise anatomical landmark detection.
-          </p>
-          <!-- KR 해석: 해부학적 랜드마크를 정밀하게 탐지하기 위한 딥러닝 기반 방법을 연구합니다. -->
-        </article>
-
-        <article class="card research-card">
-          <h3>Vision AI Systems</h3>
-          <p>
-            Building practical AI systems that work reliably across diverse modalities and applications.
-          </p>
-          <!-- KR 해석: 다양한 데이터 형태와 응용 환경에서 안정적으로 동작하는 실용적 AI 시스템 구축에 관심이 있습니다. -->
-        </article>
-      </div>
-    </div>
-  </section>
+  
 
   <!--
     ============================================
@@ -875,13 +833,9 @@
   <section class="section" id="publications">
     <div class="container">
       <h2 class="section-title">Publications</h2>
-      <p class="section-subtitle">
-        International journals, conferences, and domestic conference publications
-      </p>
 
-      <div class="publication-grid">
+      <div class="publication-grid" style="grid-template-columns: 1fr;">
         <article class="card publication-card">
-          <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud:<article class="card publication-card">
           <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
             <span class="chip">Engineering Applications of Artificial Intelligence</span>
             <span class="chip">Accepted · 2026</span>
@@ -889,9 +843,6 @@
           <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h3>
           <p>
             Authors: <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho
-          </p>
-          <p>
-            This work proposes a two-stage framework for anthropometric landmark detection on 3D human point clouds, addressing both posture invariance and point-level refinement.
           </p>
           <!-- KR 해석: 3D 인체 포인트 클라우드에서 자세 불변성과 포인트 수준 정밀 보정을 함께 다루는 2단계 랜드마크 탐지 프레임워크를 제안한 연구입니다. -->
         </article>
@@ -962,34 +913,7 @@
     - 학력 정보 요약
     - 필요시 GPA, thesis title, advisor 등을 추가 가능
   -->
-  <section class="section" id="education">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-      <p class="section-subtitle">
-        Academic background from Multimedia Engineering to AI Software Convergence
-      </p>
-
-      <div class="education-grid">
-        <article class="card edu-card">
-          <h3>M.S. in Division of AI Software Convergence</h3>
-          <p class="meta">Dongguk University</p>
-          <p>
-            Conducted research on 3D point cloud processing, anthropometric landmark detection, and deep learning-based computer vision.
-          </p>
-          <!-- KR 해석: 3D point cloud processing, anthropometric landmark detection, 그리고 딥러닝 기반 computer vision을 연구했습니다. -->
-        </article>
-
-        <article class="card edu-card">
-          <h3>B.S. in Multimedia Engineering</h3>
-          <p class="meta">Dongguk University</p>
-          <p>
-            Studied computer vision, image processing, deep learning, and AI applications, building the technical foundation for both research and practical development.
-          </p>
-          <!-- KR 해석: computer vision, image processing, deep learning, AI applications를 공부하며 연구와 실무의 기반이 되는 기술 역량을 쌓았습니다. -->
-        </article>
-      </div>
-    </div>
-  </section>
+  
 
   <!--
     ============================================
@@ -998,24 +922,7 @@
     - 방문자가 바로 연락하거나 외부 프로필로 이동할 수 있도록 구성
     - 실제 URL / 메일 주소로 교체 필요
   -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-card">
-        <span class="soft-label">Get in Touch</span>
-        <h2 class="section-title" style="margin-bottom: 14px;">Let’s connect</h2>
-        <p class="section-subtitle" style="margin-bottom: 0;">
-          Vision AI, 2D/3D computer vision, Physical AI, and research collaborations are always welcome.
-        </p>
-
-        <div class="contact-links">
-          <a class="pill-link" href="mailto:your_email@example.com">Email</a>
-          <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="pill-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill-link" href="#top">Back to Top</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <footer>
     <div class="container">
