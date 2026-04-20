@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recent Trends and Analysis of 3D Human Reconstruction Techniques | Jisun Byun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!--
+    KR 해석:
+    recent-trends-3d-human-reconstruction.html 논문 상세 페이지입니다.
+    기존 publication 상세 페이지와 동일한 스타일을 유지하면서,
+    국내 학술대회 논문 성격에 맞춰 정리했습니다.
+
+    저장 경로 예시:
+    - publications/recent-trends-3d-human-reconstruction.html
+
+    이미지 경로 예시:
+    - ../assets/publications/paper-06.jpg
+  -->
+
+  <style>
+    :root {
+      --bg: #f5f6f5;
+      --bg-soft: #f0f1f0;
+      --white: #ffffff;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: #e3e6e2;
+      --text: #202521;
+      --text-soft: #5c6560;
+      --title: #151915;
+      --accent: #95c973;
+      --accent-deep: #6ea34c;
+      --accent-soft: #eef7e7;
+      --shadow: 0 12px 34px rgba(44, 54, 47, 0.07);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(210, 230, 196, 0.18), transparent 28%),
+        linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .navbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(250, 250, 250, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--title);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-soft);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+
+    .section {
+      padding: 42px 0 78px;
+    }
+
+    .hero-card,
+    .content-card,
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      border: 1px solid #d7e7c9;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .paper-title {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: var(--title);
+    }
+
+    .paper-meta {
+      margin: 0 0 16px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .paper-desc {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      margin-top: 26px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease;
+    }
+
+    .primary-btn {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 12px 26px rgba(116, 162, 84, 0.25);
+    }
+
+    .secondary-btn {
+      color: var(--title);
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .content-card,
+    .summary-card {
+      padding: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--title);
+    }
+
+    .content-card p,
+    .summary-card p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+    }
+
+    .content-card ul,
+    .summary-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-soft);
+    }
+
+    .content-card li + li,
+    .summary-card li + li {
+      margin-top: 8px;
+    }
+
+    .summary-block + .summary-block {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--accent-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .citation-box {
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 0 0 46px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card,
+      .content-card,
+      .summary-card {
+        padding: 22px;
+      }
+
+      .paper-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-wrap">
+    <div class="container navbar">
+      <a class="brand" href="../index.html">Jisun Byun</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Back to Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#details">Details</a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="hero-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: nowrap; width: 100%; margin-bottom: 10px;">
+          <div class="chip-list" style="flex: 0 0 auto;">
+            <span class="chip">Domestic Conference</span>
+          </div>
+          <a class="primary-btn" href="../index.html#publications" style="margin-left: auto; flex: 0 0 auto;">Back to Publications</a>
+        </div>
+        <div class="chip-list" style="margin-bottom: 4px;">
+          <span class="chip">3D Human Reconstruction</span>
+          <span class="chip">Survey</span>
+          <span class="chip">Computer Vision</span>
+        </div>
+
+        <h1 class="paper-title">Recent Trends and Analysis of 3D Human Reconstruction Techniques</h1>
+        <p class="paper-meta">The Institute of Electronics and Information Engineers Summer Conference <span style="margin-left: 10px;">2023</span></p>
+        <p class="paper-desc">
+          This paper reviews recent trends in 3D human reconstruction and analyzes how different approaches contribute to understanding human shape and structure from visual data. It provides an overview of the field and highlights important directions in human-centered computer vision research.
+        </p>
+
+        <!--
+          KR 해석:
+          이 논문은 3D human reconstruction의 최근 동향을 정리하고,
+          다양한 접근 방식이 시각 데이터로부터 인체 형상과 구조를 어떻게 이해하는지 분석한 리뷰 성격의 연구입니다.
+          인간 중심 computer vision 연구의 중요한 흐름과 방향성을 개괄적으로 보여줍니다.
+        -->
+
+        <div class="actions">
+          <a class="secondary-btn" href="#citation">Citation</a>
+        </div>
+
+        <img class="hero-image" src="../assets/publications/paper-06.jpg" alt="3D human reconstruction review paper image" />
+      </div>
+
+      <div class="content-grid" id="details">
+        <div class="content-card">
+          <h2 class="section-title">Paper Overview</h2>
+          <p>
+            The purpose of this paper is to organize and analyze recent research trends in 3D human reconstruction. As computer vision and deep learning techniques have advanced, various methods have been proposed to reconstruct human shape, pose, and appearance from 2D or 3D inputs. This paper examines those approaches from a broader perspective.
+          </p>
+          <p>
+            By reviewing the literature, the paper provides a structured understanding of the development of 3D human reconstruction techniques and helps clarify how the field is evolving toward more detailed and practical human-centered applications.
+          </p>
+
+          <!--
+            KR 해석:
+            이 논문의 목적은 3D human reconstruction 분야의 최근 연구 동향을 정리하고 분석하는 것입니다.
+            Computer vision과 deep learning 기술이 발전함에 따라,
+            2D 또는 3D 입력으로부터 인체 형상, 자세, 외형을 복원하는 다양한 방법들이 제안되어 왔습니다.
+            본 논문은 이러한 접근들을 보다 넓은 관점에서 정리합니다.
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Review Summary</h2>
+          <ul>
+            <li>Surveyed recent approaches to 3D human reconstruction</li>
+            <li>Compared how different methods model human shape, pose, and appearance</li>
+            <li>Analyzed the role of computer vision and deep learning in the field</li>
+            <li>Highlighted the research direction of human-centered 3D understanding</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - 최근 3D human reconstruction 접근법을 조사
+            - 인체 형상, 자세, 외형을 모델링하는 다양한 방법 비교
+            - computer vision과 deep learning의 역할 분석
+            - 인간 중심 3D understanding 연구의 방향성 정리
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Key Contributions</h2>
+          <ul>
+            <li>Provided an organized review of recent 3D human reconstruction research</li>
+            <li>Helped clarify major methodological trends in the field</li>
+            <li>Contributed to understanding how human-centered 3D reconstruction is developing</li>
+            <li>Built a foundational perspective for later research in 3D human analysis</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - 최근 3D human reconstruction 연구를 체계적으로 정리
+            - 분야의 주요 방법론적 흐름을 명확히 제시
+            - 인간 중심 3D reconstruction 연구가 어떻게 발전하고 있는지 이해하는 데 기여
+            - 이후 3D human analysis 연구를 위한 기초 관점 형성
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;" id="citation">Citation</h2>
+          <div class="citation-box">
+            J. S. Byun and S. I. Cho, “Recent Trends and Analysis of 3D Human Reconstruction Techniques,” The Institute of Electronics and Information Engineers Summer Conference, 2023.
+          </div>
+
+          <!--
+            KR 해석:
+            논문 인용문을 바로 복사할 수 있도록 Citation 박스를 추가했습니다.
+          -->
+        </div>
+
+        <aside class="summary-card">
+          <div class="summary-block">
+            <span class="small-label">Authors</span>
+            <p>J. S. Byun and S. I. Cho</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Publication Info</span>
+            <p>The Institute of Electronics and Information Engineers Summer Conference</p>
+            <p>Domestic Conference</p>
+            <p>2023</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Keywords</span>
+            <div class="chip-list">
+              <span class="chip">3D Human Reconstruction</span>
+              <span class="chip">Survey</span>
+              <span class="chip">Computer Vision</span>
+              <span class="chip">Deep Learning</span>
+            </div>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Paper Focus</span>
+            <ul>
+              <li>Research trend analysis</li>
+              <li>3D human reconstruction methods</li>
+              <li>Human-centered 3D understanding</li>
+              <li>Foundational review for later work</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Note</span>
+            <p>
+              This paper serves as an early review-based study and can later be connected with subsequent research pages to show how your interests developed from 3D reconstruction to landmark detection and human analysis.
+            </p>
+          </div>
+
+          <!--
+            KR 해석:
+            오른쪽 요약 카드에는 저자, 출판 정보, 키워드, 논문 초점, 메모를 정리했습니다.
+            이후 연구 관심이 3D reconstruction에서 landmark detection과 human analysis로 확장된 흐름을 연결하는 데 활용할 수 있습니다.
+          -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Jisun Byun. All rights reserved.</div>
+  </footer>
+</body>
+</html>
