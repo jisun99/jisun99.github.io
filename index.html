@@ -8,32 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!--
-    KR 해석:
-    전체 파일을 다시 정리한 안정 버전입니다.
-    이전 패치 과정에서 구조가 꼬인 부분을 정리하고,
-    현재 요청 기준에 맞춰 레이아웃/섹션/스타일을 다시 맞췄습니다.
-
-    포함 섹션:
-    - Hero
-    - About
-    - Experience
-    - Projects
-    - Publications
-    - Patents
-
-    삭제된 섹션:
-    - Research
-    - Education
-    - Contact
-
-    이미지/상세 페이지 경로:
-    - 회사/학교 아이콘: hdksoe.svg, dongguk.png
-    - 프로젝트 이미지: assets/projects/project-01.jpg ...
-    - 논문 이미지: assets/publications/paper-01.jpg ...
-    - 상세 페이지: projects/*.html, publications/*.html, patents/*.html
-  -->
-
   <style>
     :root {
       --bg: #f5f6f5;
@@ -244,6 +218,12 @@
       transform: translateY(-2px);
     }
 
+    .btn-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
     .meta {
       margin: 0 0 10px;
       color: var(--text-soft);
@@ -251,10 +231,38 @@
       font-weight: 600;
     }
 
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
     .about-copy p,
     .card p {
       margin: 0 0 12px;
       color: var(--text-soft);
+    }
+
+    .about-keywords {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .about-keywords h3 {
+      margin: 0 0 14px;
+      font-size: 1.06rem;
+      color: var(--title);
+      letter-spacing: -0.02em;
+    }
+
+    .keyword-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
     }
 
     .experience-grid,
@@ -372,7 +380,8 @@
     }
 
     @media (max-width: 900px) {
-      .media-card {
+      .media-card,
+      .about-layout {
         grid-template-columns: 1fr;
       }
 
@@ -418,35 +427,36 @@
   <header class="hero" id="top">
     <div class="container">
       <div class="hero-main">
-        <!-- KR 해석: Hero는 하나의 통합 카드로 구성했습니다. -->
         <img class="profile-avatar" src="jisun_small.jpg?text=Jisun+Byun" alt="Jisun Byun profile image" />
         <h1 class="hero-title">Jisun Byun</h1>
         <p class="profile-role">Senior AI Researcher · HD KSOE Physical AI Team</p>
 
-        <div class="chip-list" aria-label="Core keywords" style="justify-content: center; margin-top: 20px;">
-          <span class="chip">Computer Vision</span>
-          <span class="chip">3D Point Cloud Processing</span>
-          <span class="chip">Human Landmark Detection</span>
-          <span class="chip">2D Object Detection</span>
-          <span class="chip">Deep Learning</span>
-          <span class="chip">Physical AI</span>
-        </div>
-
-        <div class="card" style="width: 100%; text-align: left; background: rgba(255,255,255,0.72); box-shadow: none; margin-top: 22px;">
-          <h3 style="margin: 0 0 12px;">Education & Experience</h3>
-          <ul style="margin: 0; padding-left: 20px; color: var(--text-soft);">
-            <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
-            <li>M.S. in Division of AI Software Convergence, Dongguk University (2023.03 - 2025.02)</li>
-            <li>B.S. in Multimedia Engineering, Dongguk University (2018.03 - 2023.02)</li>
-          </ul>
-          <!-- KR 해석: Hero 카드 안에는 요청한 경력/학력 3줄만 유지했습니다. -->
-        </div>
-
         <div class="hero-actions">
-          <a class="primary-btn" href="#projects">View Projects</a>
-          <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill-link" href="mailto:kellybjs99@gmail.com">Email</a>
+          <a class="primary-btn" href="#projects">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            View Projects
+          </a>
+          <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.11 0-1.13.39-2.05 1.03-2.78-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.06A9.3 9.3 0 0112 6.84c.85 0 1.71.12 2.51.35 1.9-1.34 2.74-1.06 2.74-1.06.55 1.41.2 2.46.1 2.72.64.73 1.03 1.65 1.03 2.78 0 3.97-2.34 4.85-4.57 5.1.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.6.69.49A10.26 10.26 0 0022 12.23C22 6.58 17.52 2 12 2z"/>
+            </svg>
+            GitHub
+          </a>
+          <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 003.28 4.97c0 1.08.88 1.97 1.97 1.97a1.97 1.97 0 100-3.94zM20.44 13.02c0-3.1-1.66-4.54-3.87-4.54-1.78 0-2.58.98-3.03 1.67V8.5h-3.38c.04 1.09 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.88-1.39 1.9-1.39 1.34 0 1.88 1.04 1.88 2.56V20H20.44l0-6.98z"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a class="pill-link" href="mailto:kellybjs99@gmail.com">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" rx="2"/>
+              <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Email
+          </a>
         </div>
       </div>
     </div>
@@ -455,17 +465,30 @@
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title">About</h2>
-      <div class="card about-copy">
-        <p>
-          I am a Vision AI researcher and engineer with experience across both industrial applications and academic research. My work combines practical development in <strong>2D object detection</strong> with research experience in <strong>3D point cloud processing</strong> and <strong>human landmark detection</strong>.
-        </p>
-        <p>
-          Currently, I work as a <strong>Senior AI Researcher in the Physical AI Team at HD Korea Shipbuilding & Offshore Engineering</strong>, where I contribute to real-world Vision AI development for industrial environments. My interests lie in building reliable computer vision systems that are technically strong and practical for deployment.
-        </p>
-        <p>
-          In parallel, my academic background has focused on 3D human understanding, including anthropometric landmark detection, posture-robust estimation, and learning-based analysis of human scan data. By combining 2D and 3D perspectives, I aim to develop Vision AI systems that can adapt to diverse data modalities and real application scenarios.
-        </p>
-        <!-- KR 해석: About은 연구/실무 경험을 자연스럽게 설명하는 본문만 유지했습니다. -->
+      <div class="about-layout">
+        <div class="card about-copy">
+          <p>
+            I am a Vision AI researcher and engineer with experience across both industrial applications and academic research. My work combines practical development in <strong>2D object detection</strong> with research experience in <strong>3D point cloud processing</strong> and <strong>human landmark detection</strong>.
+          </p>
+          <p>
+            Currently, I work as a <strong>Senior AI Researcher in the Physical AI Team at HD Korea Shipbuilding & Offshore Engineering</strong>, where I contribute to real-world Vision AI development for industrial environments. My interests lie in building reliable computer vision systems that are technically strong and practical for deployment.
+          </p>
+          <p>
+            In parallel, my academic background has focused on 3D human understanding, including anthropometric landmark detection, posture-robust estimation, and learning-based analysis of human scan data. By combining 2D and 3D perspectives, I aim to develop Vision AI systems that can adapt to diverse data modalities and real application scenarios.
+          </p>
+        </div>
+
+        <aside class="card about-keywords" aria-label="Core keywords">
+          <h3>Core Keywords</h3>
+          <div class="keyword-panel">
+            <span class="chip">Computer Vision</span>
+            <span class="chip">3D Point Cloud Processing</span>
+            <span class="chip">Human Landmark Detection</span>
+            <span class="chip">2D Object Detection</span>
+            <span class="chip">Deep Learning</span>
+            <span class="chip">Physical AI</span>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -491,7 +514,6 @@
             <li>Contribute to Physical AI system development for practical applications</li>
             <li>Bridge research ideas with deployable engineering solutions</li>
           </ul>
-          <!-- KR 해석: 팀/직급 변화와 업무 내용을 함께 유지했습니다. -->
         </article>
 
         <article class="card timeline-card">
@@ -747,7 +769,6 @@
               </div>
             </div>
           </a>
-          <!-- KR 해석: 공개 전 특허는 구체적 명칭 대신 보수적으로 표기했습니다. -->
         </article>
       </div>
     </div>
