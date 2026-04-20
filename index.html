@@ -25,7 +25,6 @@
     - 프로젝트 상세 링크, 논문 링크 추가
   -->
 
-
   <style>
     /*
       --------------------------------------------
@@ -34,21 +33,22 @@
       전체 색상 톤을 쉽게 바꾸기 위해 변수화합니다.
       파스텔 연두색 + 아이보리 + 진한 녹색 계열 조합입니다.
     */
-    :root {
-      --bg: #f7fbf4;
-      --bg-soft: #eef7e8;
-      --card: rgba(255, 255, 255, 0.88);
+    ::root {
+      --bg: #f6f7f6;
+      --bg-soft: #f0f1f0;
+      --card: rgba(255, 255, 255, 0.92);
       --card-strong: #ffffff;
-      --line: #d8e7cf;
-      --mint: #dff0d1;
-      --mint-strong: #c7e7b8;
-      --mint-deep: #a8d792;
-      --text: #243224;
-      --text-soft: #516451;
-      --title: #173117;
-      --accent: #6fa85b;
-      --accent-deep: #4c8b39;
-      --shadow: 0 10px 30px rgba(77, 121, 67, 0.10);
+      --line: #e2e5e1;
+      --line-soft: #ecefed;
+      --mint: #dfeecf;
+      --mint-strong: #cde6b7;
+      --mint-deep: #a9cf8b;
+      --text: #222826;
+      --text-soft: #5d6762;
+      --title: #151a17;
+      --accent: #94c973;
+      --accent-deep: #6ea34c;
+      --shadow: 0 12px 32px rgba(50, 58, 54, 0.07);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
@@ -73,9 +73,8 @@
       margin: 0;
       font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(204, 235, 188, 0.45), transparent 32%),
-        radial-gradient(circle at top right, rgba(225, 244, 212, 0.50), transparent 28%),
-        linear-gradient(180deg, #f9fdf7 0%, #f2f9ee 100%);
+        radial-gradient(circle at top left, rgba(212, 230, 196, 0.18), transparent 28%),
+        linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
       color: var(--text);
       line-height: 1.7;
     }
@@ -89,7 +88,6 @@
       max-width: 100%;
       display: block;
     }
-
 
     .container {
       width: min(var(--max-width), calc(100% - 32px));
@@ -119,104 +117,6 @@
       gap: 22px;
     }
 
-
-    
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(216, 231, 207, 0.9);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      backdrop-filter: blur(10px);
-    }
-
-    .chip-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chip {
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--mint);
-      color: var(--accent-deep);
-      border: 1px solid #cfe5c2;
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .pill-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 18px;
-      background: var(--card-strong);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-      font-weight: 600;
-      color: var(--title);
-    }
-
-
-    .pill-link:hover {
-      transform: translateY(-2px);
-      background: #fcfffa;
-      border-color: var(--mint-deep);
-    }
-
-    .soft-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      background: var(--mint);
-      border: 1px solid #d0e7c6;
-      border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: var(--accent-deep);
-      letter-spacing: 0.02em;
-    }
-
-    /*
-      --------------------------------------------
-      3. 상단 고정 네비게이션
-      --------------------------------------------
-      섹션 이동이 가능하도록 anchor 링크를 사용합니다.
-    */
-    .navbar-wrap {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(247, 251, 244, 0.75);
-      border-bottom: 1px solid rgba(216, 231, 207, 0.7);
-    }
-
-    .navbar {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-
-    .brand {
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--title);
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
     }
 
     .nav-links a {
@@ -240,7 +140,6 @@
       padding: 72px 0 56px;
     }
 
-
     .hero-grid {
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
@@ -249,11 +148,10 @@
     }
 
     .hero-main {
-      padding: 38px;
+      padding: 42px;
       border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(238,247,232,0.95));
-      border: 1px solid rgba(216, 231, 207, 0.95);
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(245,246,245,0.96));
+      border: 1px solid rgba(226, 229, 225, 0.95);
       box-shadow: var(--shadow);
     }
 
@@ -279,7 +177,6 @@
       margin-top: 28px;
     }
 
-
     .primary-btn {
       display: inline-flex;
       align-items: center;
@@ -292,123 +189,7 @@
       box-shadow: 0 12px 28px rgba(79, 137, 59, 0.22);
     }
 
-    .primary-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .hero-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .profile-card {
-      background: var(--card);
-      border: 1px solid rgba(216, 231, 207, 0.9);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-xl);
-      padding: 28px;
-      text-align: center;
-    }
-
-    .profile-avatar {
-      width: 132px;
-      height: 132px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid #eff8ea;
-      background: linear-gradient(135deg, #dcedcf, #f8fcf5);
-      box-shadow: 0 8px 24px rgba(74, 111, 54, 0.14);
-    }
-
-
-    .profile-name {
-      margin: 0;
-      font-size: 1.35rem;
-      color: var(--title);
-    }
-
-    .profile-role {
-      margin: 6px 0 0;
-      color: var(--text-soft);
-      font-size: 0.96rem;
-    }
-
-    .quick-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .stat-box {
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.84);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .stat-number {
-      display: block;
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--accent-deep);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-
-
-    .stat-label {
-      font-size: 0.92rem;
-      color: var(--text-soft);
-    }
-
-    /*
-      --------------------------------------------
-      5. About / Research / Experience / Projects 등
-      --------------------------------------------
-    */
-    .about-grid,
-    .research-grid,
-    .experience-grid,
-    .projects-grid,
-    .publication-grid,
-    .education-grid {
-      display: grid;
-      gap: 22px;
-    }
-
-    .about-grid {
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: start;
-    }
-
-    .research-grid,
-    .publication-grid,
-    .education-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-
-    .experience-grid,
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .timeline-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .timeline-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 6px;
-      height: 100%;
-      background: linear-gradient(180deg, var(--mint-deep), var(--accent));
-    }
+ 
 
     .timeline-card h3,
     .project-card h3,
@@ -433,7 +214,6 @@
       margin: 0 0 12px;
       color: var(--text-soft);
     }
-
 
     .card ul {
       margin: 0;
@@ -469,7 +249,6 @@
       6. 연락처 / 푸터
       --------------------------------------------
     */
-
     .contact-card {
       text-align: center;
       padding: 40px 28px;
@@ -488,71 +267,7 @@
       margin-top: 24px;
     }
 
-    footer {
-      padding: 32px 0 52px;
-      color: var(--text-soft);
-      text-align: center;
-      font-size: 0.95rem;
-    }
 
-    /*
-      --------------------------------------------
-      7. 반응형 처리
-      --------------------------------------------
-      태블릿/모바일에서도 읽기 편하도록 레이아웃을 재배치합니다.
-    */
-    @media (max-width: 980px) {
-      .hero-grid,
-      .about-grid,
-      .research-grid,
-      .publication-grid,
-      .education-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-
-      .navbar {
-        padding: 14px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .section {
-        padding: 70px 0;
-      }
-
-      .hero-main,
-      .profile-card,
-      .card,
-      .contact-card {
-        padding: 22px;
-      }
-
-      .quick-stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-    <!--
-    ============================================
-    상단 네비게이션
-    ============================================
-    - 각 섹션으로 부드럽게 이동하는 anchor 링크
-    - GitHub Pages 개인 포트폴리오에 자주 쓰이는 구조
   -->
   <div class="navbar-wrap">
     <div class="container navbar">
@@ -580,33 +295,43 @@
   <header class="hero" id="top">
     <div class="container hero-grid">
       <div class="hero-main">
+        <!--
+          KR 해석:
+          안녕하세요. 저는 산업 현장에서의 2D object detection 개발 경험과,
+          학문적 연구를 통해 쌓아온 3D point cloud processing 및 human landmark detection 역량을 바탕으로
+          실용적이면서도 강인한 Vision AI 시스템을 연구하고 개발하는 변지선입니다.
+        -->
         <span class="soft-label">Vision AI Portfolio</span>
         <h1 class="hero-title">
-          Building robust <br />
-          Vision AI across <span class="highlight">2D and 3D</span>
+          Robust Vision AI <br />
+          across 2D and 3D
         </h1>
         <p class="hero-desc">
-          안녕하세요. 저는 산업 현장에서의 <strong>2D object detection</strong> 개발 경험과,
-          학문적 연구를 통해 쌓아온 <strong>3D point cloud processing</strong>,
-          <strong>human landmark detection</strong> 역량을 바탕으로 Vision AI를 연구하고 개발하는
-          변지선입니다. 실무와 연구를 연결하며, 다양한 데이터 형태와 실제 문제 환경에 유연하게 대응할 수 있는
-          computer vision 시스템을 만드는 데 관심이 있습니다.
+          Hello, I’m Jisun Byun, a Vision AI researcher and engineer with industrial experience in <strong>2D object detection</strong> and academic research experience in <strong>3D point cloud processing</strong> and <strong>human landmark detection</strong>. I am interested in building practical and reliable computer vision systems that can adapt to diverse data modalities and real-world environments.
         </p>
 
+        <!--
+          KR 해석:
+          저는 2D와 3D를 모두 아우르는 컴퓨터 비전 역량을 바탕으로,
+          실무와 연구를 연결할 수 있는 Vision AI 인재로 성장하고자 합니다.
+        -->
         <div class="chip-list" aria-label="Core keywords">
           <span class="chip">2D Object Detection</span>
           <span class="chip">3D Point Cloud Processing</span>
           <span class="chip">Human Landmark Detection</span>
           <span class="chip">Deep Learning</span>
           <span class="chip">Computer Vision</span>
-          <span class="chip">Physical AI</span>
+          <span class="chip">Practical AI Systems</span>
         </div>
-
 
         <div class="hero-actions">
           <!--
-            아래 링크는 실제 주소로 교체하세요.
-            예: href="https://github.com/your-id"
+            KR 해석:
+            버튼 문구 예시
+            - View Projects: 프로젝트 보러가기
+            - GitHub: 깃허브 바로가기
+            - LinkedIn: 링크드인 바로가기
+            - Email: 이메일 보내기
           -->
           <a class="primary-btn" href="#projects">View Projects</a>
           <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
@@ -615,47 +340,7 @@
         </div>
       </div>
 
-      <div class="hero-side">
-        <div class="profile-card">
-          <!--
-            프로필 이미지 사용 방법:
-            1) repository에 assets/profile.jpg 업로드
-            2) 아래 src를 assets/profile.jpg 로 변경
-            이미지가 아직 없으면 현재 placeholder 상태로 유지해도 됩니다.
-          -->
-          <img
-            class="profile-avatar"
-            src="https://via.placeholder.com/300x300.png?text=Jisun+Byun"
-            alt="Jisun Byun profile image"
-          />
-          <h2 class="profile-name">Jisun Byun</h2>
-          <p class="profile-role">
-            Senior AI Researcher · Vision AI · 2D/3D Computer Vision
-          </p>
-        </div>
 
-
-        <div class="quick-stats">
-          <div class="stat-box">
-            <span class="stat-number">2D + 3D</span>
-            <span class="stat-label">Vision AI Expertise</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-number">EAAI</span>
-            <span class="stat-label">Accepted Journal Paper</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-number">HD KSOE</span>
-            <span class="stat-label">Industrial AI Experience</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-number">3D Human</span>
-            <span class="stat-label">Research Focus</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
 
   <!--
     ============================================
@@ -670,7 +355,6 @@
       <p class="section-subtitle">
         실무와 연구를 연결하며, 2D와 3D를 모두 다룰 수 있는 Vision AI 연구자
       </p>
-
 
       <div class="about-grid">
         <div class="card">
@@ -706,38 +390,7 @@
     </div>
   </section>
 
-   <!--
-    ============================================
-    Research 섹션
-    ============================================
-    - 사용자의 관심 분야를 카드 형태로 나열
-    - 시각적으로 한눈에 전문 분야를 보여주기 위함
-  -->
-  <section class="section" id="research">
-    <div class="container">
-      <h2 class="section-title">Research</h2>
-      <p class="section-subtitle">
-        2D perception부터 3D human understanding까지 이어지는 연구 관심사
-      </p>
 
-      <div class="research-grid">
-        <article class="card research-card">
-          <h3>2D Object Detection</h3>
-          <p>
-            산업 환경에서 활용 가능한 object detection 모델을 개발하고,
-            실제 데이터와 배포 환경을 고려한 강인한 시각 인식 성능 향상에 관심이 있습니다.
-          </p>
-        </article>
-
-        <article class="card research-card">
-          <h3>3D Point Cloud Processing</h3>
-          <p>
-            포인트 클라우드 기반의 3D human data를 처리하고 분석하며,
-            구조적 정보와 지역적 특징을 효과적으로 활용하는 표현 학습을 연구합니다.
-          </p>
-        </article>
-
-        <article class="card research-card">
           <h3>Human Landmark Detection</h3>
           <p>
             인체 스캔 데이터에서 해부학적 landmark를 보다 정밀하게 탐지하기 위한
@@ -756,8 +409,7 @@
     </div>
   </section>
 
-
-    <!--
+  <!--
     ============================================
     Experience 섹션
     ============================================
@@ -798,31 +450,6 @@
   </section>
 
 
-  <!--
-    ============================================
-    Projects 섹션
-    ============================================
-    - 프로젝트별로 무엇을 했는지 간단히 설명
-    - 사내 프로젝트는 보안상 세부 목적/시스템명을 최소화하고
-      역할과 기술 중심으로 서술
-  -->
-  <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">
-        산업 응용부터 국가 과제, 대학원 연구 프로젝트까지
-      </p>
-
-      <div class="projects-grid">
-        <article class="card project-card">
-          <h3>In-house Vision AI Project for Industrial Quality Inspection</h3>
-          <p class="meta">HD Hyundai · 2026.01 – Present</p>
-          <p>
-            산업 현장의 품질 검사 환경을 대상으로 Vision AI 모델을 개발하는 사내 프로젝트입니다.
-            실제 배포 가능성을 고려한 detection robustness와 practical applicability 향상에 중점을 두고 있습니다.
-          </p>
-        </article>
-
         <article class="card project-card">
           <h3>In-house Object Detection-based Vision AI Project for Quality Analysis</h3>
           <p class="meta">HD Hyundai · 2025.01 – 2025.12</p>
@@ -831,7 +458,6 @@
             모델 성능 향상과 실환경 데이터에 대한 안정적인 인식 성능 확보를 목표로 수행했습니다.
           </p>
         </article>
-
 
         <article class="card project-card">
           <h3>Integrated Human Anthropometric Data Management System</h3>
@@ -873,15 +499,6 @@
   </section>
 
 
-  <!--
-    ============================================
-    Publications 섹션
-    ============================================
-    - 논문 목록을 카테고리 형태로 분리
-    - DOI 또는 논문 링크가 있으면 오른쪽에 버튼 추가 가능
-  -->
-  <section class="section" id="publications">
-    <div class="container">
       <h2 class="section-title">Publications</h2>
       <p class="section-subtitle">
         International journals, conferences, and domestic conference publications
@@ -899,7 +516,6 @@
             3D human point cloud에서 anthropometric landmark를 탐지하기 위한 two-stage framework를 제안한 연구입니다.
           </p>
         </article>
-
 
         <article class="card publication-card">
           <h3>IEEE Transactions on Automation Science and Engineering</h3>
@@ -956,11 +572,8 @@
     - 학력 정보 요약
     - 필요시 GPA, thesis title, advisor 등을 추가 가능
   -->
+
   <section class="section" id="education">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-      <p class="section-subtitle">
-        Multimedia Engineering에서 AI Software Convergence까지 이어진 학업 배경
       </p>
 
       <div class="education-grid">
@@ -971,7 +584,6 @@
             3D point cloud processing, anthropometric landmark detection, deep learning-based computer vision 연구를 수행했습니다.
           </p>
         </article>
-
 
         <article class="card edu-card">
           <h3>B.S. in Multimedia Engineering</h3>
@@ -1017,7 +629,6 @@
     </div>
   </footer>
 
-  
   <!--
     ============================================
     간단한 보조 스크립트
@@ -1036,23 +647,4 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
