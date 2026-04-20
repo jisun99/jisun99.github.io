@@ -1,78 +1,60 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Jisun Byun | Vision AI Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!--
     KR 해석:
-    기본 폰트로 Inter를 연결했습니다.
-    이후 원하시면 다음과 같은 다른 폰트로도 변경 가능합니다.
-    - DM Sans
-    - Manrope
-    - Outfit
-    - Noto Sans KR
-  -->
-  <title>Jisun Byun</title>
+    전체 파일을 다시 정리한 안정 버전입니다.
+    이전 패치 과정에서 구조가 꼬인 부분을 정리하고,
+    현재 요청 기준에 맞춰 레이아웃/섹션/스타일을 다시 맞췄습니다.
 
-  <!--
-    ============================================
-    Jisun Byun Portfolio - Single File Version
-    ============================================
-    목적:
-    - GitHub Pages에서 바로 사용할 수 있는 단일 index.html 파일
-    - pastel green(파스텔 연두색) 계열의 차분한 톤
-    - 연구/경력/프로젝트/논문을 한 페이지에서 보여주는 포트폴리오
+    포함 섹션:
+    - Hero
+    - About
+    - Experience
+    - Projects
+    - Publications
+    - Patents
 
-    사용 방법:
-    1) 이 파일명을 index.html로 저장
-    2) GitHub Repository 루트에 업로드
-    3) GitHub Pages 활성화
+    삭제된 섹션:
+    - Research
+    - Education
+    - Contact
 
-    수정 포인트:
-    - 프로필 이미지 경로: assets/profile.jpg 등으로 변경
-    - GitHub / LinkedIn / Email / Scholar 링크 변경
-    - 프로젝트 상세 링크, 논문 링크 추가
+    이미지/상세 페이지 경로:
+    - 회사/학교 아이콘: hdksoe.svg, dongguk.png
+    - 프로젝트 이미지: assets/projects/project-01.jpg ...
+    - 논문 이미지: assets/publications/paper-01.jpg ...
+    - 상세 페이지: projects/*.html, publications/*.html, patents/*.html
   -->
 
   <style>
-    /*
-      --------------------------------------------
-      1. CSS 변수 정의
-      --------------------------------------------
-      전체 색상 톤을 쉽게 바꾸기 위해 변수화합니다.
-      파스텔 연두색 + 아이보리 + 진한 녹색 계열 조합입니다.
-    */
     :root {
-      --bg: #f6f7f6;
+      --bg: #f5f6f5;
       --bg-soft: #f0f1f0;
-      --card: rgba(255, 255, 255, 0.92);
-      --card-strong: #ffffff;
-      --line: #e2e5e1;
-      --line-soft: #ecefed;
-      --mint: #dfeecf;
-      --mint-strong: #cde6b7;
-      --mint-deep: #a9cf8b;
-      --text: #222826;
-      --text-soft: #5d6762;
-      --title: #151a17;
-      --accent: #94c973;
+      --white: #ffffff;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: #e3e6e2;
+      --line-soft: #edf0ec;
+      --text: #202521;
+      --text-soft: #5c6560;
+      --title: #151915;
+      --accent: #95c973;
       --accent-deep: #6ea34c;
-      --shadow: 0 12px 32px rgba(50, 58, 54, 0.07);
+      --accent-soft: #eef7e7;
+      --shadow: 0 12px 34px rgba(44, 54, 47, 0.07);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
-      --max-width: 1180px;
+      --max-width: 1120px;
     }
 
-    /*
-      --------------------------------------------
-      2. 기본 리셋 및 공통 스타일
-      --------------------------------------------
-    */
     * {
       box-sizing: border-box;
     }
@@ -85,10 +67,10 @@
       margin: 0;
       font-family: "Manrope", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(212, 230, 196, 0.18), transparent 28%),
+        radial-gradient(circle at top left, rgba(210, 230, 196, 0.18), transparent 28%),
         linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.72;
     }
 
     a {
@@ -97,8 +79,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .container {
@@ -107,115 +89,46 @@
     }
 
     .section {
-      padding: 88px 0;
+      padding: 84px 0;
     }
 
     .section-title {
-      margin: 0 0 10px;
-      font-size: clamp(1.9rem, 3vw, 2.7rem);
-      color: var(--title);
+      margin: 0 0 28px;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
       line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
-      margin: 0 0 36px;
-      color: var(--text-soft);
-      font-size: 1rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 22px;
+      letter-spacing: -0.03em;
+      color: var(--title);
     }
 
     .card {
       background: var(--card);
-      border: 1px solid rgba(216, 231, 207, 0.9);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      backdrop-filter: blur(10px);
-    }
-
-    .chip-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chip {
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--mint);
-      color: var(--accent-deep);
-      border: 1px solid #cfe5c2;
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .pill-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 18px;
-      background: var(--card-strong);
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-      font-weight: 600;
-      color: var(--title);
+      padding: 28px;
     }
 
-    .pill-link:hover {
-      transform: translateY(-2px);
-      background: #fcfffa;
-      border-color: var(--mint-deep);
-    }
-
-    .soft-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      background: #f4f8ef;
-      border: 1px solid #dce8d1;
-      border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: var(--accent-deep);
-      letter-spacing: 0.02em;
-    }
-
-    /*
-      --------------------------------------------
-      3. 상단 고정 네비게이션
-      --------------------------------------------
-      섹션 이동이 가능하도록 anchor 링크를 사용합니다.
-    */
     .navbar-wrap {
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(250, 250, 250, 0.82);
-      border-bottom: 1px solid rgba(226, 229, 225, 0.9);
+      background: rgba(250, 250, 250, 0.84);
+      border-bottom: 1px solid var(--line);
     }
 
     .navbar {
       min-height: 72px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      align-items: center;
+      gap: 16px;
     }
 
     .brand {
       font-weight: 800;
       font-size: 1rem;
       color: var(--title);
-      letter-spacing: -0.02em;
     }
 
     .nav-links {
@@ -227,189 +140,129 @@
 
     .nav-links a {
       font-size: 0.95rem;
-      color: var(--text-soft);
       font-weight: 600;
+      color: var(--text-soft);
     }
 
     .nav-links a:hover {
       color: var(--accent-deep);
     }
 
-    /*
-      --------------------------------------------
-      4. Hero 영역
-      --------------------------------------------
-      첫 화면에서 사용자의 정체성과 강점을 강조합니다.
-      2D/3D Vision AI, 실무 + 연구 역량을 한 번에 보여줍니다.
-    */
     .hero {
-      padding: 72px 0 56px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 26px;
-      align-items: stretch;
+      padding: 84px 0 48px;
     }
 
     .hero-main {
-      padding: 42px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
       border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(245,246,245,0.96));
-      border: 1px solid rgba(226, 229, 225, 0.95);
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(245,246,245,0.97));
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
-    }
-
-    .hero-title {
-      margin: 0 0 16px;
-      font-size: clamp(2.3rem, 5vw, 4.3rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: var(--title);
-    }
-
-    .hero-desc {
-      margin: 0 0 26px;
-      color: var(--text-soft);
-      font-size: 1.05rem;
-      max-width: 720px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .primary-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-      color: white;
-      font-weight: 700;
-      box-shadow: 0 12px 28px rgba(79, 137, 59, 0.22);
-    }
-
-    .primary-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .hero-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .profile-card {
-      background: var(--card);
-      border: 1px solid rgba(226, 229, 225, 0.95);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-xl);
-      padding: 28px;
       text-align: center;
     }
 
     .profile-avatar {
-      width: 132px;
-      height: 132px;
+      width: 136px;
+      height: 136px;
       margin: 0 auto 18px;
       border-radius: 50%;
       object-fit: cover;
-      border: 6px solid #eff8ea;
-      background: linear-gradient(135deg, #dcedcf, #f8fcf5);
-      box-shadow: 0 8px 24px rgba(74, 111, 54, 0.14);
+      background: linear-gradient(135deg, #f3f5f2, #ffffff);
+      border: 4px solid #eef2ea;
     }
 
-    .profile-name {
-      margin: 0;
-      font-size: 1.35rem;
+    .hero-title {
+      margin: 0 0 8px;
+      font-size: clamp(2.05rem, 4.5vw, 3.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
       color: var(--title);
     }
 
     .profile-role {
-      margin: 6px 0 0;
+      margin: 0;
+      font-size: 1rem;
       color: var(--text-soft);
-      font-size: 0.96rem;
+      font-weight: 600;
     }
 
-    .quick-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .span-2 {
-      grid-column: span 2;
-    }
-
-    .stat-list {
-      margin: 8px 0 0;
-      padding-left: 18px;
-      color: var(--text-soft);
-      text-align: left;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .stat-list li + li {
-      margin-top: 4px;
-    }
-
-    .stat-box {
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.95);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .stat-number {
-      display: block;
-      font-size: 1.45rem;
-      font-weight: 800;
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
       color: var(--accent-deep);
-      line-height: 1.1;
-      margin-bottom: 4px;
+      border: 1px solid #d7e7c9;
+      font-size: 0.92rem;
+      font-weight: 700;
     }
 
-    .stat-label {
-      font-size: 0.92rem;
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .primary-btn,
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .primary-btn {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 12px 26px rgba(116, 162, 84, 0.25);
+    }
+
+    .pill-link {
+      color: var(--title);
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .primary-btn:hover,
+    .pill-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .meta {
+      margin: 0 0 10px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .about-copy p,
+    .card p {
+      margin: 0 0 12px;
       color: var(--text-soft);
     }
 
-    /*
-      --------------------------------------------
-      5. About / Research / Experience / Projects 등
-      --------------------------------------------
-    */
-    .about-grid,
-    .research-grid,
     .experience-grid,
     .projects-grid,
     .publication-grid,
-    .education-grid {
+    .patent-grid {
       display: grid;
       gap: 22px;
-    }
-
-    .about-grid {
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: start;
-    }
-
-    .research-grid,
-    .publication-grid,
-    .education-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .experience-grid,
-    .projects-grid {
-      grid-template-columns: 1fr;
     }
 
     .timeline-card {
@@ -420,56 +273,19 @@
     .timeline-card::before {
       content: "";
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
       width: 6px;
       height: 100%;
-      background: linear-gradient(180deg, var(--mint-deep), var(--accent));
-    }
-
-    .timeline-card h3,
-    .project-card h3,
-    .publication-card h3,
-    .edu-card h3,
-    .research-card h3 {
-      margin: 0;
-      font-size: 1.22rem;
-      color: var(--title);
-      line-height: 1.35;
-      letter-spacing: -0.02em;
-    }
-
-    .item-link {
-      display: block;
-      color: inherit;
-    }
-
-    .item-link:hover h3 {
-      color: var(--accent-deep);
-    }
-
-    .media-card {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .thumb {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      border-radius: 18px;
-      object-fit: cover;
-      border: 1px solid var(--line);
-      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      background: linear-gradient(180deg, var(--accent), var(--accent-deep));
     }
 
     .item-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: flex-start;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .item-title-wrap {
@@ -490,155 +306,102 @@
     }
 
     .item-date {
+      white-space: nowrap;
       color: var(--text-soft);
       font-size: 0.92rem;
       font-weight: 700;
-      white-space: nowrap;
       flex-shrink: 0;
     }
 
-    .meta {
-      margin: 0 0 14px;
-      color: var(--accent-deep);
-      font-weight: 700;
-      font-size: 0.93rem;
+    .timeline-card h3,
+    .project-card h3,
+    .publication-card h3,
+    .patent-card h3 {
+      margin: 0;
+      font-size: 1.18rem;
+      line-height: 1.38;
+      letter-spacing: -0.02em;
+      color: var(--title);
     }
 
-    .card p {
-      margin: 0 0 12px;
-      color: var(--text-soft);
-    }
-
-    .card ul {
+    .timeline-card ul {
       margin: 0;
       padding-left: 20px;
       color: var(--text-soft);
     }
 
-    .indented-list {
-      padding-left: 34px !important;
-      margin-top: 14px !important;
-    } margin-top: 14px !importan
-
-    .card li + li {
+    .timeline-card li + li {
       margin-top: 8px;
     }
 
-    .project-card,
-    .publication-card,
-    .research-card,
-    .edu-card {
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    .indented-list {
+      padding-left: 34px !important;
+      margin-top: 14px !important;
     }
 
-    .project-card:hover,
-    .publication-card:hover,
-    .research-card:hover,
-    .edu-card:hover {
-      transform: translateY(-4px);
+    .media-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      align-items: start;
     }
 
-    .highlight {
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+    }
+
+    .item-link {
+      display: block;
+      color: inherit;
+    }
+
+    .item-link:hover h3 {
       color: var(--accent-deep);
-      font-weight: 700;
-    }
-
-    /*
-      --------------------------------------------
-      6. 연락처 / 푸터
-      --------------------------------------------
-    */
-    .contact-card {
-      text-align: center;
-      padding: 40px 28px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(223,240,209,0.72));
-      border: 1px solid rgba(216, 231, 207, 0.95);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 24px;
     }
 
     footer {
-      padding: 32px 0 52px;
-      color: var(--text-soft);
+      padding: 40px 0 54px;
       text-align: center;
-      font-size: 0.95rem;
+      color: var(--text-soft);
+      font-size: 0.94rem;
     }
 
-    /*
-      --------------------------------------------
-      7. 반응형 처리
-      --------------------------------------------
-      태블릿/모바일에서도 읽기 편하도록 레이아웃을 재배치합니다.
-    */
-    @media (max-width: 980px) {
-      .hero-grid,
-      .about-grid,
-      .publication-grid,
-      .education-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 900px) {
       .media-card {
         grid-template-columns: 1fr;
       }
 
-      .navbar {
-        padding: 14px 0;
-        align-items: flex-start;
+      .item-header {
         flex-direction: column;
+        align-items: flex-start;
       }
     }
 
+    @media (max-width: 720px) {
       .navbar {
         padding: 14px 0;
-        align-items: flex-start;
         flex-direction: column;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .section {
-        padding: 70px 0;
+        align-items: flex-start;
       }
 
       .hero-main,
-      .profile-card,
-      .card,
-      .contact-card {
+      .card {
         padding: 22px;
       }
 
-      .quick-stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-      }
-
-      .nav-links {
-        gap: 12px;
+      .profile-avatar {
+        width: 116px;
+        height: 116px;
       }
     }
   </style>
 </head>
 <body>
-  <!--
-    ============================================
-    상단 네비게이션
-    ============================================
-    - 각 섹션으로 부드럽게 이동하는 anchor 링크
-    - GitHub Pages 개인 포트폴리오에 자주 쓰이는 구조
-  -->
   <div class="navbar-wrap">
     <div class="container navbar">
       <a class="brand" href="#top">Jisun Byun</a>
@@ -647,121 +410,69 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
-        </nav>
+        <a href="#patents">Patents</a>
+      </nav>
     </div>
   </div>
 
-  <!--
-    ============================================
-    Hero 섹션
-    ============================================
-    - 페이지 첫 화면
-    - 사용자의 핵심 브랜딩 문장 강조
-    - 2D/3D Vision AI, 실무와 연구를 모두 갖춘 인재라는 점을 배치
-  -->
   <header class="hero" id="top">
-    <div class="container hero-grid" style="grid-template-columns: 1fr; max-width: 880px;">
+    <div class="container">
       <div class="hero-main">
-        <!--
-          KR 해석:
-          Hero 카드를 하나로 통합한 버전입니다.
-          기존의 오른쪽 프로필 카드와 왼쪽 소개 패널을 하나의 카드로 합치고,
-          사용자가 원한 대로 기존 소개 문구는 제거했습니다.
-        -->
-        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;">
-          <img
-            class="profile-avatar"
-            src="https://via.placeholder.com/300x300.png?text=Jisun+Byun"
-            alt="Jisun Byun profile image"
-          />
+        <!-- KR 해석: Hero는 하나의 통합 카드로 구성했습니다. -->
+        <img class="profile-avatar" src="https://via.placeholder.com/300x300.png?text=Jisun+Byun" alt="Jisun Byun profile image" />
+        <h1 class="hero-title">Jisun Byun</h1>
+        <p class="profile-role">Senior AI Researcher · HD KSOE Physical AI Team</p>
 
-          <div>
-            <h1 class="hero-title" style="font-size: clamp(2rem, 4.2vw, 3.4rem); margin-bottom: 10px;">
-              Jisun Byun
-            </h1>
-            <p class="profile-role" style="font-size: 1.02rem; margin: 0;">
-              Senior AI Researcher · HD KSOE Physical AI Team
-            </p>
- <div class="chip-list" aria-label="Core keywords" style="justify-content: center;">
-            <span class="chip">Computer Vision</span>
-            <span class="chip">3D Point Cloud Processing</span>
-            <span class="chip">Human Landmark Detection</span>
-            <span class="chip">2D Object Detection</span>
-            <span class="chip">Deep Learning</span>
-            <span class="chip">Physical AI</span>
-          </div> AI</span>
-          </div>
+        <div class="chip-list" aria-label="Core keywords" style="justify-content: center; margin-top: 20px;">
+          <span class="chip">Computer Vision</span>
+          <span class="chip">3D Point Cloud Processing</span>
+          <span class="chip">Human Landmark Detection</span>
+          <span class="chip">2D Object Detection</span>
+          <span class="chip">Deep Learning</span>
+          <span class="chip">Physical AI</span>
+        </div>
 
-          <div class="card" style="width: 100%; text-align: left; background: rgba(255,255,255,0.72); box-shadow: none;">
-            <h3 style="margin-top: 0;">Education & E<ul class="stat-list" style="margin-top: 0; padding-left: 20px;">
-              <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
-              <li>M.S. in Division of AI Software Convergence, Dongguk University (2023.03 - 2025.02)</li>
-              <li>B.S. in Multimedia Engineering, Dongguk University (2018.03 - 2023.02)</li>
-            </ul> 학력과 경력을 하나의 카드 안에 통합하여 간결하게 보여줍니다. -->
-          </div>
+        <div class="card" style="width: 100%; text-align: left; background: rgba(255,255,255,0.72); box-shadow: none; margin-top: 22px;">
+          <h3 style="margin: 0 0 12px;">Education & Experience</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--text-soft);">
+            <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
+            <li>M.S. in Division of AI Software Convergence, Dongguk University (2023.03 - 2025.02)</li>
+            <li>B.S. in Multimedia Engineering, Dongguk University (2018.03 - 2023.02)</li>
+          </ul>
+          <!-- KR 해석: Hero 카드 안에는 요청한 경력/학력 3줄만 유지했습니다. -->
+        </div>
 
-          <div class="hero-actions" style="justify-content: center;">
-            <a class="primary-btn" href="#projects">View Projects</a>
-            <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="pill-link" href="mailto:kellybjs99@gmail.com">Email</a>
-          </div>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#projects">View Projects</a>
+          <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill-link" href="mailto:kellybjs99@gmail.com">Email</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!--
-    ============================================
-    About 섹션
-    ============================================
-    - 사용자의 서사와 방향성을 소개
-    - 링크드인 About과 유사하지만 웹 포트폴리오에 맞게 조금 더 풍부하게 설명
-  -->
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title">About</h2>
-
-      <div class="card">
+      <div class="card about-copy">
         <p>
           I am a Vision AI researcher and engineer with experience across both industrial applications and academic research. My work combines practical development in <strong>2D object detection</strong> with research experience in <strong>3D point cloud processing</strong> and <strong>human landmark detection</strong>.
         </p>
         <p>
-          Currently, I work as a <strong>Senior AI Researcher in the Physical AI Team at HD Korea Shipbuilding & Offshore Engineering</strong>, where I contribute to real-world Vision AI development for industrial environments. My interests lie in building reliable computer vision systems that are not only technically strong, but also practical for deployment.
+          Currently, I work as a <strong>Senior AI Researcher in the Physical AI Team at HD Korea Shipbuilding & Offshore Engineering</strong>, where I contribute to real-world Vision AI development for industrial environments. My interests lie in building reliable computer vision systems that are technically strong and practical for deployment.
         </p>
         <p>
           In parallel, my academic background has focused on 3D human understanding, including anthropometric landmark detection, posture-robust estimation, and learning-based analysis of human scan data. By combining 2D and 3D perspectives, I aim to develop Vision AI systems that can adapt to diverse data modalities and real application scenarios.
         </p>
-        <!-- KR 해석:
-          저는 산업 현장 응용과 학문적 연구를 모두 경험한 Vision AI 연구자이자 엔지니어입니다.
-          2D object detection 실무 개발 경험과 3D point cloud processing 및 human landmark detection 연구 경험을 함께 가지고 있습니다.
-          현재 HD한국조선해양 Physical AI Team에서 Senior AI Researcher로 근무하며, 실제 산업 환경에 적용 가능한 Vision AI 시스템 개발에 참여하고 있습니다.
-          동시에 학문적으로는 3D human understanding, anthropometric landmark detection, posture-robust estimation, human scan data 분석을 연구해왔습니다.
-        -->
+        <!-- KR 해석: About은 연구/실무 경험을 자연스럽게 설명하는 본문만 유지했습니다. -->
       </div>
     </div>
   </section>
 
-  <!--
-    ============================================
-    Research 섹션
-    ============================================
-    - 사용자의 관심 분야를 카드 형태로 나열
-    - 시각적으로 한눈에 전문 분야를 보여주기 위함
-  -->
-  
-
-  <!--
-    ============================================
-    Experience 섹션
-    ============================================
-    - 이력서/링크드인 내용을 웹 포트폴리오용으로 구조화
-    - 타임라인처럼 보이도록 왼쪽 강조선 추가
-  -->
   <section class="section" id="experience">
     <div class="container">
       <h2 class="section-title">Experience</h2>
-
       <div class="experience-grid">
         <article class="card timeline-card">
           <div class="item-header">
@@ -780,7 +491,7 @@
             <li>Contribute to Physical AI system development for practical applications</li>
             <li>Bridge research ideas with deployable engineering solutions</li>
           </ul>
-          <!-- KR 해석: HD KSOE 경력을 팀/직급 변화에 맞춰 두 줄로 구분하고, 기존 업무/연구 내역도 다시 포함했습니다. -->
+          <!-- KR 해석: 팀/직급 변화와 업무 내용을 함께 유지했습니다. -->
         </article>
 
         <article class="card timeline-card">
@@ -800,44 +511,29 @@
             <li>Worked on dynamic posture-robust landmark estimation</li>
             <li>Explored diverse 3D vision tasks related to human body analysis</li>
           </ul>
-          <!-- KR 해석: 요청에 맞춰 학력/연구실 표기를 수정하고, 기존 연구 내역도 그대로 유지했습니다. -->
         </article>
       </div>
     </div>
   </section>
 
-  <!--
-    ============================================
-    Projects 섹션
-    ============================================
-    - 프로젝트별로 무엇을 했는지 간단히 설명
-    - 사내 프로젝트는 보안상 세부 목적/시스템명을 최소화하고
-      역할과 기술 중심으로 서술
-  -->
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
-
       <div class="projects-grid">
         <article class="card project-card">
           <a class="item-link" href="projects/industrial-quality-inspection.html">
             <div class="media-card">
               <img class="thumb" src="assets/projects/project-01.jpg" alt="Industrial quality inspection project thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-                  <span class="chip">HD Hyundai</span>
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">HD Hyundai</span></div>
+                <div class="item-header">
                   <h3>In-house Vision AI Project for Industrial Quality Inspection</h3>
                   <span class="item-date">2026.01 – Present</span>
                 </div>
-                <p>
-                  An internal Vision AI project focused on industrial quality inspection in real-world environments. The project emphasizes detection robustness and practical applicability for deployment.
-                </p>
+                <p>An internal Vision AI project focused on industrial quality inspection in real-world environments. The project emphasizes detection robustness and practical applicability for deployment.</p>
               </div>
             </div>
           </a>
-          <!-- KR 해석: 각 프로젝트 카드는 개별 상세 페이지로 연결되도록 a 태그로 감쌌습니다. 썸네일 이미지는 assets/projects 경로에 넣으면 됩니다. -->
         </article>
 
         <article class="card project-card">
@@ -845,16 +541,12 @@
             <div class="media-card">
               <img class="thumb" src="assets/projects/project-02.jpg" alt="Object detection quality analysis project thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-                  <span class="chip">HD Hyundai</span>
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">HD Hyundai</span></div>
+                <div class="item-header">
                   <h3>In-house Object Detection-based Vision AI Project for Quality Analysis</h3>
                   <span class="item-date">2025.01 – 2025.12</span>
                 </div>
-                <p>
-                  An object detection-based Vision AI project for industrial quality analysis, focused on performance improvement and reliable perception in practical data environments.
-                </p>
+                <p>An object detection-based Vision AI project for industrial quality analysis, focused on performance improvement and reliable perception in practical data environments.</p>
               </div>
             </div>
           </a>
@@ -865,16 +557,12 @@
             <div class="media-card">
               <img class="thumb" src="assets/projects/project-03.jpg" alt="Anthropometric data management system thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-                  <span class="chip">KATS</span>
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">KATS</span></div>
+                <div class="item-header">
                   <h3>Integrated Human Anthropometric Data Management System</h3>
                   <span class="item-date">2024.06 – 2024.12</span>
                 </div>
-                <p>
-                  Contributed to the development of an integrated system for managing anthropometric data, with a focus on efficient data organization, processing, and utilization.
-                </p>
+                <p>Contributed to the development of an integrated system for managing anthropometric data, with a focus on efficient data organization, processing, and utilization.</p>
               </div>
             </div>
           </a>
@@ -885,16 +573,12 @@
             <div class="media-card">
               <img class="thumb" src="assets/projects/project-04.jpg" alt="3D dynamic human body surface measurement project thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-                  <span class="chip">KATS</span>
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">KATS</span></div>
+                <div class="item-header">
                   <h3>Protocol Development for 3D Dynamic Human Body Surface Measurement</h3>
                   <span class="item-date">2023.06 – 2023.12</span>
                 </div>
-                <p>
-                  Participated in a national research project on 3D dynamic human body surface measurement, working on 3D human scan processing, landmark-related analysis, and posture-aware body understanding.
-                </p>
+                <p>Participated in a national research project on 3D dynamic human body surface measurement, working on 3D human scan processing, landmark-related analysis, and posture-aware body understanding.</p>
               </div>
             </div>
           </a>
@@ -905,16 +589,12 @@
             <div class="media-card">
               <img class="thumb" src="assets/projects/project-05.jpg" alt="Sports game AI R&D project thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-                  <span class="chip">KOCCA</span>
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">KOCCA</span></div>
+                <div class="item-header">
                   <h3>Advanced AI R&amp;D Training Program for Sports Game Applications</h3>
                   <span class="item-date">2022.09 – 2022.12</span>
                 </div>
-                <p>
-                  Participated in an AI R&amp;D training program for sports game applications, gaining hands-on experience in applied AI problem solving within interactive environments.
-                </p>
+                <p>Participated in an AI R&amp;D training program for sports game applications, gaining hands-on experience in applied AI problem solving within interactive environments.</p>
               </div>
             </div>
           </a>
@@ -925,16 +605,12 @@
             <div class="media-card">
               <img class="thumb" src="assets/projects/project-06.jpg" alt="Atari AI implementation project thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-                  <span class="chip">Personal / Academic Project</span>
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">Personal / Academic Project</span></div>
+                <div class="item-header">
                   <h3>OpenAI-based Atari Game Playing AI Implementation</h3>
                   <span class="item-date">2022.03 – 2022.06</span>
                 </div>
-                <p>
-                  Implemented a deep learning-based Atari game playing AI, improving interaction performance through action refinement and image processing.
-                </p>
+                <p>Implemented a deep learning-based Atari game playing AI, improving interaction performance through action refinement and image processing.</p>
               </div>
             </div>
           </a>
@@ -943,35 +619,22 @@
     </div>
   </section>
 
-  <!--
-    ============================================
-    Publications 섹션
-    ============================================
-    - 논문 목록을 카테고리 형태로 분리
-    - DOI 또는 논문 링크가 있으면 오른쪽에 버튼 추가 가능
-  -->
   <section class="section" id="publications">
     <div class="container">
       <h2 class="section-title">Publications</h2>
-
-      <div class="publication-grid" style="grid-template-columns: 1fr;">
+      <div class="publication-grid">
         <article class="card publication-card">
           <a class="item-link" href="publications/two-stage-anthropometric-landmark-detection.html">
             <div class="media-card">
               <img class="thumb" src="assets/publications/paper-01.jpg" alt="Two-stage anthropometric landmark detection paper thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Publication type" style="margin-bottom: 14px;">
-                  <span class="chip">International Journal</span>
-                  
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">International Journal</span></div>
+                <div class="item-header">
                   <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h3>
                   <span class="item-date">Accepted · 2026</span>
                 </div>
                 <p class="meta">Engineering Applications of Artificial Intelligence <em>(CiteScore 9.5 · IF 8.0)</em></p>
-                <p>
-                  <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho
-                </p>
+                <p><strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho</p>
               </div>
             </div>
           </a>
@@ -980,20 +643,15 @@
         <article class="card publication-card">
           <a class="item-link" href="publications/context-aware-sim-to-real-lane-detection.html">
             <div class="media-card">
-              <img class="thumb" src="assets/publications/paper-02.jpg" alt="Lane detection domain adaptation paper thumbnail" />
+              <img class="thumb" src="assets/publications/paper-02.jpg" alt="Lane detection paper thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Publication type" style="margin-bottom: 14px;">
-                  <span class="chip">International Journal</span>
-                  
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">International Journal</span></div>
+                <div class="item-header">
                   <h3>Context-aware Sim-to-real Unsupervised Domain Adaptation for Lane Detection via Disentangled Feature Alignment</h3>
                   <span class="item-date">2025</span>
                 </div>
                 <p class="meta">IEEE Transactions on Automation Science and Engineering <em>(CiteScore 12.5 · IF 5.9)</em></p>
-                <p>
-                  Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho
-                </p>
+                <p>Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho</p>
               </div>
             </div>
           </a>
@@ -1002,20 +660,15 @@
         <article class="card publication-card">
           <a class="item-link" href="publications/geodesic-heatmap-landmark-detection.html">
             <div class="media-card">
-              <img class="thumb" src="assets/publications/paper-03.jpg" alt="Geodesic heatmap landmark detection paper thumbnail" />
+              <img class="thumb" src="assets/publications/paper-03.jpg" alt="Geodesic heatmap paper thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Publication type" style="margin-bottom: 14px;">
-                  <span class="chip">International Journal</span>
-                  
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">International Journal</span></div>
+                <div class="item-header">
                   <h3>Anthropometric Landmark Detection Network via Geodesic Heatmap on 3D Human Scan</h3>
                   <span class="item-date">2024</span>
                 </div>
                 <p class="meta">IEEE Access <em>(CiteScore 9.0 · IF 3.6)</em></p>
-                <p>
-                  M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho
-                </p>
+                <p>M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho</p>
               </div>
             </div>
           </a>
@@ -1026,16 +679,13 @@
             <div class="media-card">
               <img class="thumb" src="assets/publications/paper-04.jpg" alt="Perceptual Mura Index paper thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Publication type" style="margin-bottom: 14px;">
-                  <span class="chip">International Journal</span>
-                  <span class="chip">2024<                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">International Journal</span></div>
+                <div class="item-header">
                   <h3>Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation</h3>
                   <span class="item-date">2024</span>
                 </div>
                 <p class="meta">Measurement <em>(CiteScore 11.5 · IF 5.6)</em></p>
-                <p>
-                  J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho
-                </p>
+                <p>J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho</p>
               </div>
             </div>
           </a>
@@ -1044,18 +694,15 @@
         <article class="card publication-card">
           <a class="item-link" href="publications/smpl-based-landmark-detection.html">
             <div class="media-card">
-              <img class="thumb" src="assets/publications/paper-05.jpg" alt="SMPL-based landmark detection paper thumbnail" />
+              <img class="thumb" src="assets/publications/paper-05.jpg" alt="SMPL paper thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Publication type" style="margin-bottom: 14px;">
-                  <span class="chip">International Conference</span>
-                  <span class="chip">2024<                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">International Conference</span></div>
+                <div class="item-header">
                   <h3>SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud</h3>
                   <span class="item-date">2024</span>
                 </div>
                 <p class="meta">ITC-CSCC 2024</p>
-                <p>
-                  <strong>J. S. Byun</strong> and S. I. Cho
-                </p>
+                <p><strong>J. S. Byun</strong> and S. I. Cho</p>
               </div>
             </div>
           </a>
@@ -1064,20 +711,15 @@
         <article class="card publication-card">
           <a class="item-link" href="publications/recent-trends-3d-human-reconstruction.html">
             <div class="media-card">
-              <img class="thumb" src="assets/publications/paper-06.jpg" alt="3D human reconstruction review paper thumbnail" />
+              <img class="thumb" src="assets/publications/paper-06.jpg" alt="3D human reconstruction paper thumbnail" />
               <div>
-                <div class="chip-list" aria-label="Publication type" style="margin-bottom: 14px;">
-                  <span class="chip">Domestic Conference</span>
-                  
-                </div>
-                <div class="item-header" style="margin-bottom: 12px;">
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">Domestic Conference</span></div>
+                <div class="item-header">
                   <h3>Recent Trends and Analysis of 3D Human Reconstruction Techniques</h3>
                   <span class="item-date">2023</span>
                 </div>
                 <p class="meta">The Institute of Electronics and Information Engineers Summer Conference</p>
-                <p>
-                  <strong>J. S. Byun</strong> and S. I. Cho
-                </p>
+                <p><strong>J. S. Byun</strong> and S. I. Cho</p>
               </div>
             </div>
           </a>
@@ -1086,45 +728,33 @@
     </div>
   </section>
 
-  <!--
-    ============================================
-    Education 섹션
-    ============================================
-    - 학력 정보 요약
-    - 필요시 GPA, thesis title, advisor 등을 추가 가능
-  -->
-  
-
-  <!--
-    ============================================
-    Contact 섹션
-    ============================================
-    - 방문자가 바로 연락하거나 외부 프로필로 이동할 수 있도록 구성
-    - 실제 URL / 메일 주소로 교체 필요
-  -->
-  
+  <section class="section" id="patents">
+    <div class="container">
+      <h2 class="section-title">Patents</h2>
+      <div class="patent-grid">
+        <article class="card patent-card">
+          <a class="item-link" href="patents/patent-01.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/patents/patent-01.jpg" alt="Patent thumbnail" />
+              <div>
+                <div class="chip-list" style="margin-bottom: 14px;"><span class="chip">Patent Application</span></div>
+                <div class="item-header">
+                  <h3>Vision AI-related Patent Application</h3>
+                  <span class="item-date">Filed</span>
+                </div>
+                <p class="meta">Details intentionally summarized prior to publication</p>
+                <p>This section can be updated after public disclosure or publication of the patent application.</p>
+              </div>
+            </div>
+          </a>
+          <!-- KR 해석: 공개 전 특허는 구체적 명칭 대신 보수적으로 표기했습니다. -->
+        </article>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      © 2026 Jisun Byun. All rights reserved.
-    </div>
+    <div class="container">© 2026 Jisun Byun. All rights reserved.</div>
   </footer>
-
-  <!--
-    ============================================
-    간단한 보조 스크립트
-    ============================================
-    현재는 복잡한 기능 없이, 추후 확장을 고려해 script 영역을 남겨둡니다.
-    예를 들어:
-    - 다크모드 토글
-    - 프로젝트 필터링
-    - 언어 전환(KR/EN)
-    등을 이곳에 추가할 수 있습니다.
-  -->
-  <script>
-    // 현재는 기본 동작만 사용하므로 별도 JS 로직은 없습니다.
-    // 필요 시 아래 영역에 기능을 추가하세요.
-    console.log("Portfolio page loaded successfully.");
-  </script>
 </body>
 </html>
