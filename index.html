@@ -329,6 +329,23 @@
       gap: 14px;
     }
 
+    .span-2 {
+      grid-column: span 2;
+    }
+
+    .stat-list {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .stat-list li + li {
+      margin-top: 4px;
+    }
+
     .stat-box {
       padding: 20px;
       border-radius: var(--radius-lg);
@@ -581,6 +598,8 @@
           KR 해석:
           저는 2D와 3D를 모두 아우르는 컴퓨터 비전 역량을 바탕으로,
           실무와 연구를 연결할 수 있는 Vision AI 인재로 성장하고자 합니다.
+          현재 HD KSOE Physical AI Team 소속이라는 점을 반영해,
+          Physical AI 키워드를 과하지 않게 함께 표시합니다.
         -->
         <div class="chip-list" aria-label="Core keywords">
           <span class="chip">2D Object Detection</span>
@@ -588,7 +607,7 @@
           <span class="chip">Human Landmark Detection</span>
           <span class="chip">Deep Learning</span>
           <span class="chip">Computer Vision</span>
-          <span class="chip">Practical AI Systems</span>
+          <span class="chip">Physical AI</span>
         </div>
 
         <div class="hero-actions">
@@ -602,8 +621,8 @@
           -->
           <a class="primary-btn" href="#projects">View Projects</a>
           <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="pill-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill-link" href="mailto:your_email@example.com">Email</a>
+          <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill-link" href="mailto:kellybjs99@gmail.com">Email</a>
         </div>
       </div>
 
@@ -620,26 +639,29 @@
           />
           <h2 class="profile-name">Jisun Byun</h2>
           <p class="profile-role">
-            Senior AI Researcher · Vision AI · 2D/3D Computer Vision
+            Senior AI Researcher · HD KSOE Physical AI Team
           </p>
         </div>
 
         <div class="quick-stats">
-          <div class="stat-box">
-            <span class="stat-number">2D + 3D</span>
-            <span class="stat-label">Vision AI Expertise</span>
+          <div class="stat-box span-2">
+            <span class="stat-number">2D + 3D Vision AI</span>
+            <span class="stat-label">Research Interests</span>
           </div>
-          <div class="stat-box">
-            <span class="stat-number">EAAI</span>
-            <span class="stat-label">Accepted Journal Paper</span>
+
+          <div class="stat-box span-2">
+            <span class="stat-number">Contact Email</span>
+            <ul class="stat-list">
+              <li>kellybjs99@gmail.com</li>
+              <li>jisun.byun@hd.com</li>
+            </ul>
           </div>
-          <div class="stat-box">
-            <span class="stat-number">HD KSOE</span>
-            <span class="stat-label">Industrial AI Experience</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-number">3D Human</span>
-            <span class="stat-label">Research Focus</span>
+
+          <div class="stat-box span-2">
+            <span class="stat-number">LinkedIn</span>
+            <ul class="stat-list">
+              <li><a href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">kr.linkedin.com/in/jisun-byun-a06225357</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -873,60 +895,56 @@
 
       <div class="publication-grid">
         <article class="card publication-card">
-          <h3>Engineering Applications of Artificial Intelligence</h3>
-          <p class="meta">Accepted · 2026</p>
+          <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h3>
+          <p class="meta">Engineering Applications of Artificial Intelligence · Accepted · 2026</p>
           <p>
-            <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho,
-            “Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy.”
+            Authors: <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho
           </p>
           <p>
-            3D human point cloud에서 anthropometric landmark를 탐지하기 위한 two-stage framework를 제안한 연구입니다.
+            This work proposes a two-stage framework for anthropometric landmark detection on 3D human point clouds, addressing both posture invariance and point-level refinement.
+          </p>
+          <!-- KR 해석: 3D 인체 포인트 클라우드에서 자세 불변성과 포인트 수준 정밀 보정을 함께 다루는 2단계 랜드마크 탐지 프레임워크를 제안한 연구입니다. -->
+        </article>
+
+        <article class="card publication-card">
+          <h3>Context-aware Sim-to-real Unsupervised Domain Adaptation for Lane Detection via Disentangled Feature Alignment</h3>
+          <p class="meta">IEEE Transactions on Automation Science and Engineering · 2025</p>
+          <p>
+            Authors: Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
-          <h3>IEEE Transactions on Automation Science and Engineering</h3>
-          <p class="meta">2025</p>
+          <h3>Anthropometric Landmark Detection Network via Geodesic Heatmap on 3D Human Scan</h3>
+          <p class="meta">IEEE Access · 2024</p>
           <p>
-            Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho,
-            “Context-aware Sim-to-real Unsupervised Domain Adaptation for Lane Detection via Disentangled Feature Alignment.”
+            Authors: M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
-          <h3>IEEE Access</h3>
-          <p class="meta">2024</p>
+          <h3>Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation</h3>
+          <p class="meta">Measurement · 2024</p>
           <p>
-            M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho,
-            “Anthropometric Landmark Detection Network via Geodesic Heatmap on 3D Human Scan.”
+            Authors: J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
-          <h3>Measurement</h3>
-          <p class="meta">2024</p>
+          <h3>SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud</h3>
+          <p class="meta">ITC-CSCC 2024 · International Conference</p>
           <p>
-            J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho,
-            “Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation.”
+            Authors: <strong>J. S. Byun</strong> and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
-          <h3>ITC-CSCC 2024</h3>
-          <p class="meta">International Conference · 2024</p>
+          <h3>Recent Trends and Analysis of 3D Human Reconstruction Techniques</h3>
+          <p class="meta">The Institute of Electronics and Information Engineers Summer Conference · 2023</p>
           <p>
-            <strong>J. S. Byun</strong> and S. I. Cho,
-            “SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud.”
+            Authors: <strong>J. S. Byun</strong> and S. I. Cho
           </p>
-        </article>
-
-        <article class="card publication-card">
-          <h3>대한전자공학회 하계학술대회</h3>
-          <p class="meta">Domestic Conference · 2023</p>
-          <p>
-            <strong>변지선</strong>, 조성인,
-            “3차원 인체 재구성 기법의 최근 동향 및 분석.”
-          </p>
+          <!-- KR 해석: 3차원 인체 재구성 기법의 최근 동향 및 분석에 관한 국내 학술대회 발표 논문입니다. -->
         </article>
       </div>
     </div>
