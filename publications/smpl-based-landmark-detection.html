@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud | Jisun Byun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!--
+    KR 해석:
+    smpl-based-landmark-detection.html 논문 상세 페이지입니다.
+    이전 논문 상세 페이지들과 동일한 스타일을 유지하면서,
+    conference paper에 맞게 Overview / Method Summary / Key Contributions / Citation 중심으로 구성했습니다.
+
+    저장 경로 예시:
+    - publications/smpl-based-landmark-detection.html
+
+    이미지 경로 예시:
+    - ../assets/publications/paper-05.jpg
+  -->
+
+  <style>
+    :root {
+      --bg: #f5f6f5;
+      --bg-soft: #f0f1f0;
+      --white: #ffffff;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: #e3e6e2;
+      --text: #202521;
+      --text-soft: #5c6560;
+      --title: #151915;
+      --accent: #95c973;
+      --accent-deep: #6ea34c;
+      --accent-soft: #eef7e7;
+      --shadow: 0 12px 34px rgba(44, 54, 47, 0.07);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(210, 230, 196, 0.18), transparent 28%),
+        linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .navbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(250, 250, 250, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--title);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-soft);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+
+    .section {
+      padding: 42px 0 78px;
+    }
+
+    .hero-card,
+    .content-card,
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      border: 1px solid #d7e7c9;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .paper-title {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: var(--title);
+    }
+
+    .paper-meta {
+      margin: 0 0 16px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .paper-desc {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      margin-top: 26px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease;
+    }
+
+    .primary-btn {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 12px 26px rgba(116, 162, 84, 0.25);
+    }
+
+    .secondary-btn {
+      color: var(--title);
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .content-card,
+    .summary-card {
+      padding: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--title);
+    }
+
+    .content-card p,
+    .summary-card p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+    }
+
+    .content-card ul,
+    .summary-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-soft);
+    }
+
+    .content-card li + li,
+    .summary-card li + li {
+      margin-top: 8px;
+    }
+
+    .summary-block + .summary-block {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--accent-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .citation-box {
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 0 0 46px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card,
+      .content-card,
+      .summary-card {
+        padding: 22px;
+      }
+
+      .paper-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-wrap">
+    <div class="container navbar">
+      <a class="brand" href="../index.html">Jisun Byun</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Back to Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#details">Details</a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="hero-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: nowrap; width: 100%; margin-bottom: 10px;">
+          <div class="chip-list" style="flex: 0 0 auto;">
+            <span class="chip">International Conference</span>
+          </div>
+          <a class="primary-btn" href="../index.html#publications" style="margin-left: auto; flex: 0 0 auto;">Back to Publications</a>
+        </div>
+        <div class="chip-list" style="margin-bottom: 4px;">
+          <span class="chip">SMPL</span>
+          <span class="chip">3D Human Point Cloud</span>
+          <span class="chip">Landmark Detection</span>
+        </div>
+
+        <h1 class="paper-title">SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud</h1>
+        <p class="paper-meta">ITC-CSCC 2024 <span style="margin-left: 10px;">2024</span></p>
+        <p class="paper-desc">
+          This conference paper explores anthropometric landmark detection on 3D human point clouds using an SMPL-based representation. The work investigates how a parametric human model can support more stable landmark estimation and provide a meaningful intermediate structure for 3D human body analysis.
+        </p>
+
+        <!--
+          KR 해석:
+          이 논문은 SMPL 기반 표현을 활용하여 3D 인체 포인트 클라우드에서 anthropometric landmark detection을 수행하는 방법을 다룹니다.
+          Parametric human model이 보다 안정적인 landmark estimation을 지원하고,
+          3D human body analysis를 위한 의미 있는 중간 표현이 될 수 있는지를 탐구합니다.
+        -->
+
+        <div class="actions">
+          <a class="secondary-btn" href="#citation">Citation</a>
+        </div>
+
+        <img class="hero-image" src="../assets/publications/paper-05.jpg" alt="SMPL-based landmark detection conference paper image" />
+      </div>
+
+      <div class="content-grid" id="details">
+        <div class="content-card">
+          <h2 class="section-title">Paper Overview</h2>
+          <p>
+            The motivation of this paper is that direct landmark detection on raw 3D human point clouds can be challenging when pose variation and surface complexity are large. A parametric human model such as SMPL can provide a structured representation that helps bridge raw scan data and anatomically meaningful landmark estimation.
+          </p>
+          <p>
+            This work examines how SMPL-based modeling can be used for anthropometric landmark detection and serves as an important step toward more robust landmark analysis on 3D human body data.
+          </p>
+
+          <!--
+            KR 해석:
+            이 논문의 출발점은 raw 3D human point cloud에서 직접 landmark를 탐지하는 일이,
+            자세 변화와 표면 복잡도가 큰 경우 매우 어렵다는 점입니다.
+            SMPL과 같은 parametric human model은 raw scan data와 해부학적으로 의미 있는 landmark estimation 사이를 연결해주는 구조적 표현이 될 수 있습니다.
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Method Summary</h2>
+          <ul>
+            <li>Uses an SMPL-based representation to support anthropometric landmark detection</li>
+            <li>Links parametric human body modeling with point cloud-based analysis</li>
+            <li>Aims to provide more stable landmark estimation under 3D human body variation</li>
+            <li>Serves as an early step toward robust 3D anthropometric landmark detection</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - anthropometric landmark detection을 위해 SMPL 기반 표현을 활용합니다.
+            - parametric human body modeling과 point cloud 기반 분석을 연결합니다.
+            - 3D human body variation 상황에서 보다 안정적인 landmark estimation을 목표로 합니다.
+            - robust 3D anthropometric landmark detection으로 이어지는 초기 단계 연구로 볼 수 있습니다.
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Key Contributions</h2>
+          <ul>
+            <li>Presented an SMPL-based approach for anthropometric landmark detection on 3D human point clouds</li>
+            <li>Highlighted the usefulness of parametric body representations for landmark analysis</li>
+            <li>Connected structured body modeling with 3D point cloud understanding</li>
+            <li>Contributed to the development of later, more advanced landmark detection frameworks</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - 3D human point cloud에서 anthropometric landmark detection을 위한 SMPL 기반 접근 제안
+            - landmark analysis에서 parametric body representation의 유용성 제시
+            - structured body modeling과 3D point cloud understanding을 연결
+            - 이후 더 발전된 landmark detection framework로 이어지는 기반 연구에 기여
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;" id="citation">Citation</h2>
+          <div class="citation-box">
+            J. S. Byun and S. I. Cho, “SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud,” ITC-CSCC 2024, 2024.
+          </div>
+
+          <!--
+            KR 해석:
+            논문 인용문을 바로 복사할 수 있도록 Citation 박스를 추가했습니다.
+          -->
+        </div>
+
+        <aside class="summary-card">
+          <div class="summary-block">
+            <span class="small-label">Authors</span>
+            <p>J. S. Byun and S. I. Cho</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Publication Info</span>
+            <p>ITC-CSCC 2024</p>
+            <p>International Conference</p>
+            <p>2024</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Keywords</span>
+            <div class="chip-list">
+              <span class="chip">SMPL</span>
+              <span class="chip">3D Human Point Cloud</span>
+              <span class="chip">Landmark Detection</span>
+              <span class="chip">Anthropometric Analysis</span>
+            </div>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Paper Focus</span>
+            <ul>
+              <li>Parametric human body representation</li>
+              <li>Structured landmark estimation</li>
+              <li>3D point cloud analysis</li>
+              <li>Early-stage landmark framework development</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Note</span>
+            <p>
+              This page presents the conference version of the work and can later be expanded with presentation slides, conference details, or follow-up journal versions if needed.
+            </p>
+          </div>
+
+          <!--
+            KR 해석:
+            오른쪽 요약 카드에는 저자, 출판 정보, 키워드, 논문 초점, 메모를 정리했습니다.
+            필요 시 발표 자료나 후속 저널 논문과의 연결 정보 등을 추가할 수 있습니다.
+          -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Jisun Byun. All rights reserved.</div>
+  </footer>
+</body>
+</html>
