@@ -3,6 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!--
+    KR 해석:
+    기본 폰트로 Inter를 연결했습니다.
+    이후 원하시면 다음과 같은 다른 폰트로도 변경 가능합니다.
+    - DM Sans
+    - Manrope
+    - Outfit
+    - Noto Sans KR
+  -->
   <title>Jisun Byun | Vision AI Portfolio</title>
 
   <!--
@@ -70,7 +83,7 @@
 
     body {
       margin: 0;
-      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-family: "Inter", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
       background:
         radial-gradient(circle at top left, rgba(212, 230, 196, 0.18), transparent 28%),
         linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
@@ -577,76 +590,56 @@
     - 2D/3D Vision AI, 실무와 연구를 모두 갖춘 인재라는 점을 배치
   -->
   <header class="hero" id="top">
-    <div class="container hero-grid">
-      <div class="hero-side">
-        <div class="profile-card">
-          <!--
-            KR 해석:
-            실제 프로필 사진을 사용할 경우 repository 내 이미지 경로로 변경하세요.
-            학력과 경력은 오른쪽 프로필 카드에 통합해 간결하게 보여줍니다.
-          -->
+    <div class="container hero-grid" style="grid-template-columns: 1fr; max-width: 880px;">
+      <div class="hero-main">
+        <!--
+          KR 해석:
+          Hero 카드를 하나로 통합한 버전입니다.
+          기존의 오른쪽 프로필 카드와 왼쪽 소개 패널을 하나의 카드로 합치고,
+          사용자가 원한 대로 기존 소개 문구는 제거했습니다.
+        -->
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;">
           <img
             class="profile-avatar"
             src="https://via.placeholder.com/300x300.png?text=Jisun+Byun"
             alt="Jisun Byun profile image"
           />
-          <h2 class="profile-name">Jisun Byun</h2>
-          <p class="profile-role">Senior AI Researcher · HD KSOE Physical AI Team</p>
-          <p class="meta" style="margin-top: 14px; margin-bottom: 10px;">Education & Experience</p>
-          <ul class="stat-list" style="margin-top: 0;">
-            <li>M.S. in Division of AI Software Convergence, Dongguk University</li>
-            <li>B.S. in Multimedia Engineering, Dongguk University</li>
-            <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
-            <li>Graduate Research Assistant, Dongguk University (2023.03 – 2025.02)</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="hero-main">
-        <!--
-          KR 해석:
-          안녕하세요. 저는 산업 현장에서의 2D object detection 개발 경험과,
-          학문적 연구를 통해 쌓아온 3D point cloud processing 및 human landmark detection 역량을 바탕으로
-          실용적이면서도 강인한 Vision AI 시스템을 연구하고 개발하는 변지선입니다.
-        -->
-        <span class="soft-label">Vision AI Portfolio</span>
-        <h1 class="hero-title">
-          Robust Vision AI <br />
-          across 2D and 3D
-        </h1>
-        <p class="hero-desc">
-          Hello, I’m Jisun Byun, a Vision AI researcher and engineer with industrial experience in <strong>2D object detection</strong> and academic research experience in <strong>3D point cloud processing</strong> and <strong>human landmark detection</strong>. I am interested in building practical and reliable computer vision systems that can adapt to diverse data modalities and real-world environments.
-        </p>
+          <div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4.2vw, 3.4rem); margin-bottom: 10px;">
+              Jisun Byun
+            </h1>
+            <p class="profile-role" style="font-size: 1.02rem; margin: 0;">
+              Senior AI Researcher · HD KSOE Physical AI Team
+            </p>
+          </div>
 
-        <!--
-          KR 해석:
-          저는 2D와 3D를 모두 아우르는 컴퓨터 비전 역량을 바탕으로,
-          실무와 연구를 연결할 수 있는 Vision AI 인재로 성장하고자 합니다.
-          현재 HD KSOE Physical AI Team 소속이라는 점을 반영해,
-          Physical AI 키워드를 과하지 않게 함께 표시합니다.
-        -->
-        <div class="chip-list" aria-label="Core keywords">
-          <span class="chip">2D Object Detection</span>
-          <span class="chip">3D Point Cloud Processing</span>
-          <span class="chip">Human Landmark Detection</span>
-          <span class="chip">Deep Learning</span>
-          <span class="chip">Computer Vision</span>
-          <span class="chip">Physical AI</span>
-        </div>
+          <div class="chip-list" aria-label="Core keywords" style="justify-content: center;">
+            <span class="chip">2D Object Detection</span>
+            <span class="chip">3D Point Cloud Processing</span>
+            <span class="chip">Human Landmark Detection</span>
+            <span class="chip">Deep Learning</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">Physical AI</span>
+          </div>
 
-        <div class="hero-actions">
-          <!--
-            KR 해석:
-            버튼 문구 예시
-            - View Projects: 프로젝트 보러가기
-            - GitHub: 깃허브 바로가기
-            - LinkedIn: 링크드인 바로가기
-            - Email: 이메일 보내기
-          -->
-          <a class="primary-btn" href="#projects">View Projects</a>
-          <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill-link" href="mailto:kellybjs99@gmail.com">Email</a>
+          <div class="card" style="width: 100%; text-align: left; background: rgba(255,255,255,0.72); box-shadow: none;">
+            <h3 style="margin-top: 0;">Education & Experience</h3>
+            <ul class="stat-list" style="margin-top: 0; padding-left: 20px;">
+              <li>M.S. in Division of AI Software Convergence, Dongguk University</li>
+              <li>B.S. in Multimedia Engineering, Dongguk University</li>
+              <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
+              <li>Graduate Research Assistant, Dongguk University (2023.03 – 2025.02)</li>
+            </ul>
+            <!-- KR 해석: 학력과 경력을 하나의 카드 안에 통합하여 간결하게 보여줍니다. -->
+          </div>
+
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="primary-btn" href="#projects">View Projects</a>
+            <a class="pill-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="pill-link" href="https://kr.linkedin.com/in/jisun-byun-a06225357/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="pill-link" href="mailto:kellybjs99@gmail.com">Email</a>
+          </div>
         </div>
       </div>
     </div>
