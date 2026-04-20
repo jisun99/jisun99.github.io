@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!--
     KR 해석:
@@ -16,7 +16,7 @@
     - Outfit
     - Noto Sans KR
   -->
-  <title>Jisun Byun</title>
+  <title>Jisun Byun | Vision AI Portfolio</title>
 
   <!--
     ============================================
@@ -83,7 +83,7 @@
 
     body {
       margin: 0;
-      font-family: "Inter", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-family: "Manrope", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
       background:
         radial-gradient(circle at top left, rgba(212, 230, 196, 0.18), transparent 28%),
         linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
@@ -615,20 +615,21 @@
           </div>
 
           <div class="chip-list" aria-label="Core keywords" style="justify-content: center;">
-            <span class="chip">Computer Vision</span>
-            <span class="chip">3D Point Cloud Processing/Reconstruction</span>
-            <span class="chip">Human Landmark Detection</span>
             <span class="chip">2D Object Detection</span>
+            <span class="chip">3D Point Cloud Processing</span>
+            <span class="chip">Human Landmark Detection</span>
             <span class="chip">Deep Learning</span>
+            <span class="chip">Computer Vision</span>
             <span class="chip">Physical AI</span>
           </div>
 
           <div class="card" style="width: 100%; text-align: left; background: rgba(255,255,255,0.72); box-shadow: none;">
             <h3 style="margin-top: 0;">Education & Experience</h3>
-            <ul class="stat-list" style="margin-top: 0; padding-left: 20px
-              <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
+            <ul class="stat-list" style="margin-top: 0; padding-left: 20px;">
               <li>M.S. in Division of AI Software Convergence, Dongguk University</li>
               <li>B.S. in Multimedia Engineering, Dongguk University</li>
+              <li>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (2025.01 – Present)</li>
+              <li>Graduate Research Assistant, Dongguk University (2023.03 – 2025.02)</li>
             </ul>
             <!-- KR 해석: 학력과 경력을 하나의 카드 안에 통합하여 간결하게 보여줍니다. -->
           </div>
@@ -654,9 +655,6 @@
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title">About</h2>
-      <!-- <p class="section-subtitle">
-        A Vision AI researcher connecting practical engineering with academic research across 2D and 3D domains
-      </p> -->
 
       <div class="about-grid">
         <div class="card">
@@ -673,15 +671,15 @@
         </div>
 
         <div class="card">
-          <h3>Core Interests</h3>
+          <h3>Research Focus</h3>
           <ul>
-            <li>2D and 3D computer vision</li>
-            <li>2D object detection and robust perception</li>
-            <li>3D point cloud processing and reconstruction</li>
-            <li>Human body analysis and anthropometric landmark detection</li>
-            <li>Deep learning for real-world AI applications</li>
+            <li>2D object detection for practical industrial environments</li>
+            <li>3D point cloud processing and geometric understanding</li>
+            <li>Human landmark detection on 3D human scan data</li>
+            <li>Deep learning for robust Vision AI systems</li>
+            <li>Computer vision for real-world and Physical AI applications</li>
           </ul>
-          <!-- KR 해석: 주요 관심 분야는 2D/3D computer vision, object detection, point cloud processing, human body analysis, 그리고 실제 환경을 위한 딥러닝 응용입니다. -->
+          <!-- KR 해석: Research 내용을 간결하게 정리하여 About 오른쪽 카드에 배치했습니다. -->
         </div>
       </div>
     </div>
@@ -697,41 +695,38 @@
   <section class="section" id="research">
     <div class="container">
       <h2 class="section-title">Research</h2>
-      <p class="section-subtitle">
-        Research interests spanning from 2D perception to 3D human understanding
-      </p>
 
       <div class="research-grid">
         <article class="card research-card">
           <h3>2D Object Detection</h3>
           <p>
-            I am interested in developing object detection models for practical industrial environments and improving robust visual perception under real deployment conditions.
+            Developing robust object detection models for practical industrial environments.
           </p>
-          <!-- KR 해석: 실제 산업 환경을 위한 object detection 모델 개발과 강인한 시각 인식 성능 향상에 관심이 있습니다. -->
+          <!-- KR 해석: 실제 산업 환경을 위한 강인한 object detection 모델 개발에 관심이 있습니다. -->
         </article>
 
         <article class="card research-card">
           <h3>3D Point Cloud Processing</h3>
           <p>
-            I study representation learning and geometric analysis for 3D human data, with a focus on effectively capturing both structural information and local features from point clouds.
+            Studying representation learning and geometric analysis for 3D human data.
           </p>
-          <!-- KR 해석: 3D 인체 데이터에서 구조적 정보와 지역적 특징을 효과적으로 활용하기 위한 표현 학습과 기하 분석을 연구합니다. -->
+          <!-- KR 해석: 3D 인체 데이터에 대한 표현 학습과 기하 분석을 연구합니다. -->
         </article>
 
         <article class="card research-card">
           <h3>Human Landmark Detection</h3>
           <p>
-            My research focuses on deep learning-based methods for precise anatomical landmark detection on 3D human scan data.
+            Exploring deep learning-based methods for precise anatomical landmark detection.
           </p>
-          <!-- KR 해석: 3D 인체 스캔 데이터에서 해부학적 랜드마크를 정밀하게 탐지하기 위한 딥러닝 기반 방법을 연구합니다. -->
+          <!-- KR 해석: 해부학적 랜드마크를 정밀하게 탐지하기 위한 딥러닝 기반 방법을 연구합니다. -->
         </article>
 
         <article class="card research-card">
-          <h3>Deep Learning for Vision AI</h3>
+          <h3>Vision AI Systems</h3>
           <p>
-            I am interested in designing practical AI systems that can operate reliably across different data modalities and real-world problem settings.
+            Building practical AI systems that work reliably across diverse modalities and applications.
           </p>
-          <!-- KR 해석: 다양한 데이터 형태와 실제 문제 환경에서 안정적으로 동작할 수 있는 실용적 AI 시스템 설계에 관심이 있습니다. -->
+          <!-- KR 해석: 다양한 데이터 형태와 응용 환경에서 안정적으로 동작하는 실용적 AI 시스템 구축에 관심이 있습니다. -->
         </article>
       </div>
     </div>
@@ -796,8 +791,11 @@
 
       <div class="projects-grid">
         <article class="card project-card">
+          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+            <span class="chip">HD Hyundai</span>
+            <span class="chip">2026.01 – Present</span>
+          </div>
           <h3>In-house Vision AI Project for Industrial Quality Inspection</h3>
-          <p class="meta">HD Hyundai · 2026.01 – Present</p>
           <p>
             An internal Vision AI project focused on industrial quality inspection in real-world environments. The project emphasizes detection robustness and practical applicability for deployment.
           </p>
@@ -805,8 +803,11 @@
         </article>
 
         <article class="card project-card">
+          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+            <span class="chip">HD Hyundai</span>
+            <span class="chip">2025.01 – 2025.12</span>
+          </div>
           <h3>In-house Object Detection-based Vision AI Project for Quality Analysis</h3>
-          <p class="meta">HD Hyundai · 2025.01 – 2025.12</p>
           <p>
             An object detection-based Vision AI project for industrial quality analysis, focused on performance improvement and reliable perception in practical data environments.
           </p>
@@ -814,8 +815,11 @@
         </article>
 
         <article class="card project-card">
+          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+            <span class="chip">KATS</span>
+            <span class="chip">2024.06 – 2024.12</span>
+          </div>
           <h3>Integrated Human Anthropometric Data Management System</h3>
-          <p class="meta">KATS · 2024.06 – 2024.12</p>
           <p>
             Contributed to the development of an integrated system for managing anthropometric data, with a focus on efficient data organization, processing, and utilization.
           </p>
@@ -823,8 +827,11 @@
         </article>
 
         <article class="card project-card">
+          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+            <span class="chip">KATS</span>
+            <span class="chip">2023.06 – 2023.12</span>
+          </div>
           <h3>Protocol Development for 3D Dynamic Human Body Surface Measurement</h3>
-          <p class="meta">KATS · 2023.06 – 2023.12</p>
           <p>
             Participated in a national research project on 3D dynamic human body surface measurement, working on 3D human scan processing, landmark-related analysis, and posture-aware body understanding.
           </p>
@@ -832,8 +839,11 @@
         </article>
 
         <article class="card project-card">
+          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+            <span class="chip">KOCCA</span>
+            <span class="chip">2022.09 – 2022.12</span>
+          </div>
           <h3>Advanced AI R&amp;D Training Program for Sports Game Applications</h3>
-          <p class="meta">KOCCA · 2022.09 – 2022.12</p>
           <p>
             Participated in an AI R&amp;D training program for sports game applications, gaining hands-on experience in applied AI problem solving within interactive environments.
           </p>
@@ -841,8 +851,11 @@
         </article>
 
         <article class="card project-card">
+          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+            <span class="chip">Personal / Academic Project</span>
+            <span class="chip">2022.03 – 2022.06</span>
+          </div>
           <h3>OpenAI-based Atari Game Playing AI Implementation</h3>
-          <p class="meta">2022.03 – 2022.06</p>
           <p>
             Implemented a deep learning-based Atari game playing AI, improving interaction performance through action refinement and image processing.
           </p>
@@ -868,8 +881,12 @@
 
       <div class="publication-grid">
         <article class="card publication-card">
+          <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud:<article class="card publication-card">
+          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+            <span class="chip">Engineering Applications of Artificial Intelligence</span>
+            <span class="chip">Accepted · 2026</span>
+          </div>
           <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h3>
-          <p class="meta">Engineering Applications of Artificial Intelligence · Accepted · 2026</p>
           <p>
             Authors: <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho
           </p>
@@ -880,40 +897,55 @@
         </article>
 
         <article class="card publication-card">
+          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+            <span class="chip">IEEE Transactions on Automation Science and Engineering</span>
+            <span class="chip">2025</span>
+          </div>
           <h3>Context-aware Sim-to-real Unsupervised Domain Adaptation for Lane Detection via Disentangled Feature Alignment</h3>
-          <p class="meta">IEEE Transactions on Automation Science and Engineering · 2025</p>
           <p>
             Authors: Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
+          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+            <span class="chip">IEEE Access</span>
+            <span class="chip">2024</span>
+          </div>
           <h3>Anthropometric Landmark Detection Network via Geodesic Heatmap on 3D Human Scan</h3>
-          <p class="meta">IEEE Access · 2024</p>
           <p>
             Authors: M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
+          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+            <span class="chip">Measurement</span>
+            <span class="chip">2024</span>
+          </div>
           <h3>Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation</h3>
-          <p class="meta">Measurement · 2024</p>
           <p>
             Authors: J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
+          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+            <span class="chip">ITC-CSCC 2024</span>
+            <span class="chip">International Conference</span>
+          </div>
           <h3>SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud</h3>
-          <p class="meta">ITC-CSCC 2024 · International Conference</p>
           <p>
             Authors: <strong>J. S. Byun</strong> and S. I. Cho
           </p>
         </article>
 
         <article class="card publication-card">
+          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+            <span class="chip">The Institute of Electronics and Information Engineers Summer Conference</span>
+            <span class="chip">2023</span>
+          </div>
           <h3>Recent Trends and Analysis of 3D Human Reconstruction Techniques</h3>
-          <p class="meta">The Institute of Electronics and Information Engineers Summer Conference · 2023</p>
           <p>
             Authors: <strong>J. S. Byun</strong> and S. I. Cho
           </p>
