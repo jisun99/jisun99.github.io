@@ -432,11 +432,69 @@
     .publication-card h3,
     .edu-card h3,
     .research-card h3 {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: 1.22rem;
       color: var(--title);
       line-height: 1.35;
       letter-spacing: -0.02em;
+    }
+
+    .item-link {
+      display: block;
+      color: inherit;
+    }
+
+    .item-link:hover h3 {
+      color: var(--accent-deep);
+    }
+
+    .media-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+    }
+
+    .item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .item-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .org-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .item-date {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .meta {
@@ -516,14 +574,24 @@
       --------------------------------------------
       태블릿/모바일에서도 읽기 편하도록 레이아웃을 재배치합니다.
     */
-    @media (max-width: 980px) {
+    @media (max-width:@media (max-width: 980px) {
       .hero-grid,
       .about-grid,
-      .research-grid,
       .publication-grid,
       .education-grid {
         grid-template-columns: 1fr;
       }
+
+      .media-card {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
 
       .navbar {
         padding: 14px 0;
@@ -653,30 +721,22 @@
     <div class="container">
       <h2 class="section-title">About</h2>
 
-      <div class="about-grid">
-        <div class="card">
-          <p>
-            I work in Vision AI based on industrial experience in <strong>2D object detection</strong> and academic research experience in <strong>3D point cloud processing</strong> and <strong>anthropometric landmark detection</strong>.
-          </p>
-          <p>
-            Currently, I am a <strong>Senior AI Researcher at HD Korea Shipbuilding & Offshore Engineering</strong>, where I develop and improve industrial Vision AI models for real-world environments.
-          </p>
-          <p>
-            At the same time, my research has focused on 3D human scan data, including landmark detection, dynamic posture-robust estimation, and point-level refinement. I am especially interested in how human-centered computer vision technologies can be applied in practical settings.
-          </p>
-          <!-- KR 해석: 저는 2D object detection 실무 경험과 3D point cloud 및 anthropometric landmark detection 연구 경험을 바탕으로 Vision AI 분야에서 연구와 개발을 수행하고 있습니다. -->
-        </div>
-
-        <div class="card">
-          <h3>Research Focus</h3>
-          <div class="chip-list" aria-label="Research focus" style="margin-top: 14px;">
-            <span class="chip">2D Object Detection</span>
-            <span class="chip">3D Point Cloud Processing</span>
-            <span class="chip">Human Landmark Detection</span>
-            <span class="chip">Vision AI Systems</span>
-          </div>
-          <!-- KR 해석: Research 섹션의 제목들만 About 오른쪽 카드에 chip 형태로 배치했습니다. -->
-        </div>
+      <div class="card">
+        <p>
+          I am a Vision AI researcher and engineer with experience across both industrial applications and academic research. My work combines practical development in <strong>2D object detection</strong> with research experience in <strong>3D point cloud processing</strong> and <strong>human landmark detection</strong>.
+        </p>
+        <p>
+          Currently, I work as a <strong>Senior AI Researcher in the Physical AI Team at HD Korea Shipbuilding & Offshore Engineering</strong>, where I contribute to real-world Vision AI development for industrial environments. My interests lie in building reliable computer vision systems that are not only technically strong, but also practical for deployment.
+        </p>
+        <p>
+          In parallel, my academic background has focused on 3D human understanding, including anthropometric landmark detection, posture-robust estimation, and learning-based analysis of human scan data. By combining 2D and 3D perspectives, I aim to develop Vision AI systems that can adapt to diverse data modalities and real application scenarios.
+        </p>
+        <!-- KR 해석:
+          저는 산업 현장 응용과 학문적 연구를 모두 경험한 Vision AI 연구자이자 엔지니어입니다.
+          2D object detection 실무 개발 경험과 3D point cloud processing 및 human landmark detection 연구 경험을 함께 가지고 있습니다.
+          현재 HD한국조선해양 Physical AI Team에서 Senior AI Researcher로 근무하며, 실제 산업 환경에 적용 가능한 Vision AI 시스템 개발에 참여하고 있습니다.
+          동시에 학문적으로는 3D human understanding, anthropometric landmark detection, posture-robust estimation, human scan data 분석을 연구해왔습니다.
+        -->
       </div>
     </div>
   </section>
@@ -700,33 +760,39 @@
   <section class="section" id="experience">
     <div class="container">
       <h2 class="section-title">Experience</h2>
-      <p class="section-subtitle">
-        Industrial AI development experience and graduate-level research experience
-      </p>
 
       <div class="experience-grid">
         <article class="card timeline-card">
-          <h3>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (HD KSOE)</h3>
-          <p class="meta">2025.01 – Present</p>
+          <div class="item-header">
+            <div class="item-title-wrap">
+              <img class="org-icon" src="assets/logos/hdksoe.png" alt="HD KSOE logo" />
+              <h3>Senior AI Researcher, HD Korea Shipbuilding & Offshore Engineering (HD KSOE)</h3>
+            </div>
+            <span class="item-date">2025.01 – Present</span>
+          </div>
           <ul>
             <li>Develop industrial Vision AI systems for real-world environments</li>
             <li>Build and improve 2D object detection models</li>
             <li>Contribute to Physical AI system development for practical applications</li>
             <li>Bridge research ideas with deployable engineering solutions</li>
           </ul>
-          <!-- KR 해석: 실제 환경을 위한 산업용 Vision AI 시스템을 개발하고, 2D object detection 모델 개선 및 Physical AI 시스템 개발에 기여하고 있습니다. -->
+          <!-- KR 해석: 회사/학교 아이콘을 제목 옆에 배치할 수 있도록 구조를 변경했습니다. 로고 파일은 assets/logos 폴더에 넣으면 됩니다. -->
         </article>
 
         <article class="card timeline-card">
-          <h3>Graduate Research Assistant, Dongguk University</h3>
-          <p class="meta">2023.03 – 2025.02</p>
+          <div class="item-header">
+            <div class="item-title-wrap">
+              <img class="org-icon" src="assets/logos/dongguk.png" alt="Dongguk University logo" />
+              <h3>Graduate Research Assistant, Dongguk University</h3>
+            </div>
+            <span class="item-date">2023.03 – 2025.02</span>
+          </div>
           <ul>
             <li>Conducted research on 3D human point cloud processing and analysis</li>
             <li>Studied deep learning-based landmark detection methods</li>
             <li>Worked on dynamic posture-robust landmark estimation</li>
             <li>Explored diverse 3D vision tasks related to human body analysis</li>
           </ul>
-          <!-- KR 해석: 3D 인체 포인트 클라우드 처리, 딥러닝 기반 랜드마크 탐지, dynamic posture에 강인한 추정 등을 연구했습니다. -->
         </article>
       </div>
     </div>
@@ -743,81 +809,127 @@
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">
-        From industrial applications to national projects and graduate research
-      </p>
 
       <div class="projects-grid">
         <article class="card project-card">
-          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-            <span class="chip">HD Hyundai</span>
-            <span class="chip">2026.01 – Present</span>
-          </div>
-          <h3>In-house Vision AI Project for Industrial Quality Inspection</h3>
-          <p>
-            An internal Vision AI project focused on industrial quality inspection in real-world environments. The project emphasizes detection robustness and practical applicability for deployment.
-          </p>
-          <!-- KR 해석: 실제 산업 품질 검사 환경을 위한 사내 Vision AI 프로젝트로, 배포 가능성과 강인한 탐지 성능 향상에 중점을 둡니다. -->
+          <a class="item-link" href="projects/industrial-quality-inspection.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/projects/project-01.jpg" alt="Industrial quality inspection project thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+                  <span class="chip">HD Hyundai</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>In-house Vision AI Project for Industrial Quality Inspection</h3>
+                  <span class="item-date">2026.01 – Present</span>
+                </div>
+                <p>
+                  An internal Vision AI project focused on industrial quality inspection in real-world environments. The project emphasizes detection robustness and practical applicability for deployment.
+                </p>
+              </div>
+            </div>
+          </a>
+          <!-- KR 해석: 각 프로젝트 카드는 개별 상세 페이지로 연결되도록 a 태그로 감쌌습니다. 썸네일 이미지는 assets/projects 경로에 넣으면 됩니다. -->
         </article>
 
         <article class="card project-card">
-          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-            <span class="chip">HD Hyundai</span>
-            <span class="chip">2025.01 – 2025.12</span>
-          </div>
-          <h3>In-house Object Detection-based Vision AI Project for Quality Analysis</h3>
-          <p>
-            An object detection-based Vision AI project for industrial quality analysis, focused on performance improvement and reliable perception in practical data environments.
-          </p>
-          <!-- KR 해석: 산업 품질 분석을 위한 객체 인식 기반 Vision AI 프로젝트로, 실환경 데이터에서의 안정적인 인식 성능 향상에 초점을 둡니다. -->
+          <a class="item-link" href="projects/object-detection-quality-analysis.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/projects/project-02.jpg" alt="Object detection quality analysis project thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+                  <span class="chip">HD Hyundai</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>In-house Object Detection-based Vision AI Project for Quality Analysis</h3>
+                  <span class="item-date">2025.01 – 2025.12</span>
+                </div>
+                <p>
+                  An object detection-based Vision AI project for industrial quality analysis, focused on performance improvement and reliable perception in practical data environments.
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card project-card">
-          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-            <span class="chip">KATS</span>
-            <span class="chip">2024.06 – 2024.12</span>
-          </div>
-          <h3>Integrated Human Anthropometric Data Management System</h3>
-          <p>
-            Contributed to the development of an integrated system for managing anthropometric data, with a focus on efficient data organization, processing, and utilization.
-          </p>
-          <!-- KR 해석: 인체 치수 데이터의 효율적인 관리와 활용을 위한 통합 시스템 구축에 참여했습니다. -->
+          <a class="item-link" href="projects/anthropometric-data-management.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/projects/project-03.jpg" alt="Anthropometric data management system thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+                  <span class="chip">KATS</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Integrated Human Anthropometric Data Management System</h3>
+                  <span class="item-date">2024.06 – 2024.12</span>
+                </div>
+                <p>
+                  Contributed to the development of an integrated system for managing anthropometric data, with a focus on efficient data organization, processing, and utilization.
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card project-card">
-          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-            <span class="chip">KATS</span>
-            <span class="chip">2023.06 – 2023.12</span>
-          </div>
-          <h3>Protocol Development for 3D Dynamic Human Body Surface Measurement</h3>
-          <p>
-            Participated in a national research project on 3D dynamic human body surface measurement, working on 3D human scan processing, landmark-related analysis, and posture-aware body understanding.
-          </p>
-          <!-- KR 해석: 3차원 동적 인체표면형상 측정을 위한 국가 연구 과제에 참여하여, 3D 인체 스캔 처리와 랜드마크 분석을 수행했습니다. -->
+          <a class="item-link" href="projects/dynamic-human-body-surface-measurement.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/projects/project-04.jpg" alt="3D dynamic human body surface measurement project thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+                  <span class="chip">KATS</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Protocol Development for 3D Dynamic Human Body Surface Measurement</h3>
+                  <span class="item-date">2023.06 – 2023.12</span>
+                </div>
+                <p>
+                  Participated in a national research project on 3D dynamic human body surface measurement, working on 3D human scan processing, landmark-related analysis, and posture-aware body understanding.
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card project-card">
-          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-            <span class="chip">KOCCA</span>
-            <span class="chip">2022.09 – 2022.12</span>
-          </div>
-          <h3>Advanced AI R&amp;D Training Program for Sports Game Applications</h3>
-          <p>
-            Participated in an AI R&amp;D training program for sports game applications, gaining hands-on experience in applied AI problem solving within interactive environments.
-          </p>
-          <!-- KR 해석: 스포츠 게임 분야의 AI 응용을 위한 R&D 교육 프로그램에 참여하여, 상호작용 환경에서의 AI 문제 해결 경험을 쌓았습니다. -->
+          <a class="item-link" href="projects/sports-game-ai-rnd.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/projects/project-05.jpg" alt="Sports game AI R&D project thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+                  <span class="chip">KOCCA</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Advanced AI R&amp;D Training Program for Sports Game Applications</h3>
+                  <span class="item-date">2022.09 – 2022.12</span>
+                </div>
+                <p>
+                  Participated in an AI R&amp;D training program for sports game applications, gaining hands-on experience in applied AI problem solving within interactive environments.
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card project-card">
-          <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
-            <span class="chip">Personal / Academic Project</span>
-            <span class="chip">2022.03 – 2022.06</span>
-          </div>
-          <h3>OpenAI-based Atari Game Playing AI Implementation</h3>
-          <p>
-            Implemented a deep learning-based Atari game playing AI, improving interaction performance through action refinement and image processing.
-          </p>
-          <!-- KR 해석: 딥러닝 기반 Atari 게임 플레이 AI를 구현하고, 행동 개선과 영상 처리 기법을 통해 성능 향상을 경험했습니다. -->
+          <a class="item-link" href="projects/openai-atari-ai.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/projects/project-06.jpg" alt="Atari AI implementation project thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Project affiliation" style="margin-bottom: 14px;">
+                  <span class="chip">Personal / Academic Project</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>OpenAI-based Atari Game Playing AI Implementation</h3>
+                  <span class="item-date">2022.03 – 2022.06</span>
+                </div>
+                <p>
+                  Implemented a deep learning-based Atari game playing AI, improving interaction performance through action refinement and image processing.
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
       </div>
     </div>
@@ -836,71 +948,123 @@
 
       <div class="publication-grid" style="grid-template-columns: 1fr;">
         <article class="card publication-card">
-          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
-            <span class="chip">Engineering Applications of Artificial Intelligence</span>
-            <span class="chip">Accepted · 2026</span>
-          </div>
-          <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h3>
-          <p>
-            Authors: <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho
-          </p>
-          <!-- KR 해석: 3D 인체 포인트 클라우드에서 자세 불변성과 포인트 수준 정밀 보정을 함께 다루는 2단계 랜드마크 탐지 프레임워크를 제안한 연구입니다. -->
+          <a class="item-link" href="publications/two-stage-anthropometric-landmark-detection.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/publications/paper-01.jpg" alt="Two-stage anthropometric landmark detection paper thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+                  <span class="chip">Engineering Applications of Artificial Intelligence</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h3>
+                  <span class="item-date">Accepted · 2026</span>
+                </div>
+                <p>
+                  Authors: <strong>J. S. Byun</strong>, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card publication-card">
-          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
-            <span class="chip">IEEE Transactions on Automation Science and Engineering</span>
-            <span class="chip">2025</span>
-          </div>
-          <h3>Context-aware Sim-to-real Unsupervised Domain Adaptation for Lane Detection via Disentangled Feature Alignment</h3>
-          <p>
-            Authors: Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho
-          </p>
+          <a class="item-link" href="publications/context-aware-sim-to-real-lane-detection.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/publications/paper-02.jpg" alt="Lane detection domain adaptation paper thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+                  <span class="chip">IEEE Transactions on Automation Science and Engineering</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Context-aware Sim-to-real Unsupervised Domain Adaptation for Lane Detection via Disentangled Feature Alignment</h3>
+                  <span class="item-date">2025</span>
+                </div>
+                <p>
+                  Authors: Y. J. Chae, Y. H. Lee, <strong>J. S. Byun</strong>, and S. I. Cho
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card publication-card">
-          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
-            <span class="chip">IEEE Access</span>
-            <span class="chip">2024</span>
-          </div>
-          <h3>Anthropometric Landmark Detection Network via Geodesic Heatmap on 3D Human Scan</h3>
-          <p>
-            Authors: M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho
-          </p>
+          <a class="item-link" href="publications/geodesic-heatmap-landmark-detection.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/publications/paper-03.jpg" alt="Geodesic heatmap landmark detection paper thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+                  <span class="chip">IEEE Access</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Anthropometric Landmark Detection Network via Geodesic Heatmap on 3D Human Scan</h3>
+                  <span class="item-date">2024</span>
+                </div>
+                <p>
+                  Authors: M. H. Cha, J. H. Park, <strong>J. S. Byun</strong>, S. Ahn, G. Lee, S. H. Yoon, and S. I. Cho
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card publication-card">
-          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
-            <span class="chip">Measurement</span>
-            <span class="chip">2024</span>
-          </div>
-          <h3>Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation</h3>
-          <p>
-            Authors: J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho
-          </p>
+          <a class="item-link" href="publications/perceptual-mura-index.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/publications/paper-04.jpg" alt="Perceptual Mura Index paper thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+                  <span class="chip">Measurement</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation</h3>
+                  <span class="item-date">2024</span>
+                </div>
+                <p>
+                  Authors: J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, <strong>J. S. Byun</strong>, and S. I. Cho
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card publication-card">
-          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
-            <span class="chip">ITC-CSCC 2024</span>
-            <span class="chip">International Conference</span>
-          </div>
-          <h3>SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud</h3>
-          <p>
-            Authors: <strong>J. S. Byun</strong> and S. I. Cho
-          </p>
+          <a class="item-link" href="publications/smpl-based-landmark-detection.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/publications/paper-05.jpg" alt="SMPL-based landmark detection paper thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+                  <span class="chip">ITC-CSCC 2024</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>SMPL-based Anthropometric Landmark Detection in 3D Human Point Cloud</h3>
+                  <span class="item-date">2024</span>
+                </div>
+                <p>
+                  Authors: <strong>J. S. Byun</strong> and S. I. Cho
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
 
         <article class="card publication-card">
-          <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
-            <span class="chip">The Institute of Electronics and Information Engineers Summer Conference</span>
-            <span class="chip">2023</span>
-          </div>
-          <h3>Recent Trends and Analysis of 3D Human Reconstruction Techniques</h3>
-          <p>
-            Authors: <strong>J. S. Byun</strong> and S. I. Cho
-          </p>
-          <!-- KR 해석: 3차원 인체 재구성 기법의 최근 동향 및 분석에 관한 국내 학술대회 발표 논문입니다. -->
+          <a class="item-link" href="publications/recent-trends-3d-human-reconstruction.html">
+            <div class="media-card">
+              <img class="thumb" src="assets/publications/paper-06.jpg" alt="3D human reconstruction review paper thumbnail" />
+              <div>
+                <div class="chip-list" aria-label="Publication venue" style="margin-bottom: 14px;">
+                  <span class="chip">The Institute of Electronics and Information Engineers Summer Conference</span>
+                </div>
+                <div class="item-header" style="margin-bottom: 12px;">
+                  <h3>Recent Trends and Analysis of 3D Human Reconstruction Techniques</h3>
+                  <span class="item-date">2023</span>
+                </div>
+                <p>
+                  Authors: <strong>J. S. Byun</strong> and S. I. Cho
+                </p>
+              </div>
+            </div>
+          </a>
         </article>
       </div>
     </div>
