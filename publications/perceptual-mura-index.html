@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation | Jisun Byun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!--
+    KR 해석:
+    perceptual-mura-index.html 논문 상세 페이지입니다.
+    앞서 만든 논문 상세 페이지들과 동일한 스타일을 유지하면서,
+    논문 내용에 맞게 Overview / Method Summary / Key Contributions / Citation 중심으로 구성했습니다.
+
+    저장 경로 예시:
+    - publications/perceptual-mura-index.html
+
+    이미지 경로 예시:
+    - ../assets/publications/paper-04.jpg
+  -->
+
+  <style>
+    :root {
+      --bg: #f5f6f5;
+      --bg-soft: #f0f1f0;
+      --white: #ffffff;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: #e3e6e2;
+      --text: #202521;
+      --text-soft: #5c6560;
+      --title: #151915;
+      --accent: #95c973;
+      --accent-deep: #6ea34c;
+      --accent-soft: #eef7e7;
+      --shadow: 0 12px 34px rgba(44, 54, 47, 0.07);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(210, 230, 196, 0.18), transparent 28%),
+        linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .navbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(250, 250, 250, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--title);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-soft);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+
+    .section {
+      padding: 42px 0 78px;
+    }
+
+    .hero-card,
+    .content-card,
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      border: 1px solid #d7e7c9;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .paper-title {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: var(--title);
+    }
+
+    .paper-meta {
+      margin: 0 0 16px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .paper-desc {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      margin-top: 26px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease;
+    }
+
+    .primary-btn {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 12px 26px rgba(116, 162, 84, 0.25);
+    }
+
+    .secondary-btn {
+      color: var(--title);
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .content-card,
+    .summary-card {
+      padding: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--title);
+    }
+
+    .content-card p,
+    .summary-card p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+    }
+
+    .content-card ul,
+    .summary-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-soft);
+    }
+
+    .content-card li + li,
+    .summary-card li + li {
+      margin-top: 8px;
+    }
+
+    .summary-block + .summary-block {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--accent-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .citation-box {
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 0 0 46px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card,
+      .content-card,
+      .summary-card {
+        padding: 22px;
+      }
+
+      .paper-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-wrap">
+    <div class="container navbar">
+      <a class="brand" href="../index.html">Jisun Byun</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Back to Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#details">Details</a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="hero-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: nowrap; width: 100%; margin-bottom: 10px;">
+          <div class="chip-list" style="flex: 0 0 auto;">
+            <span class="chip">International Journal</span>
+          </div>
+          <a class="primary-btn" href="../index.html#publications" style="margin-left: auto; flex: 0 0 auto;">Back to Publications</a>
+        </div>
+        <div class="chip-list" style="margin-bottom: 4px;">
+          <span class="chip">Mura Evaluation</span>
+          <span class="chip">Perceptual Quality</span>
+          <span class="chip">Human Visual System</span>
+        </div>
+
+        <h1 class="paper-title">Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation</h1>
+        <p class="paper-meta">Measurement <span style="margin-left: 10px;">2024</span></p>
+        <p class="paper-desc">
+          This paper proposes a perceptual Mura index inspired by characteristics of the human visual system for quantitative Mura evaluation. The work aims to better reflect perceptual quality by connecting objective evaluation with how visual irregularities are actually perceived.
+        </p>
+
+        <!--
+          KR 해석:
+          이 논문은 quantitative Mura evaluation을 위해 human visual system의 특성을 반영한 perceptual Mura index를 제안합니다.
+          시각적 불균일성이 실제로 어떻게 지각되는지를 고려하여,
+          객관적 평가와 지각적 품질 사이의 연결을 강화하는 것을 목표로 합니다.
+        -->
+
+        <div class="actions">
+          <a class="secondary-btn" href="#citation">Citation</a>
+        </div>
+
+        <img class="hero-image" src="../assets/publications/paper-04.jpg" alt="Perceptual Mura Index paper image" />
+      </div>
+
+      <div class="content-grid" id="details">
+        <div class="content-card">
+          <h2 class="section-title">Paper Overview</h2>
+          <p>
+            The core motivation of this paper is that objective evaluation of visual defects should be more consistent with human perception. Mura, which refers to non-uniform visual defects, can be difficult to assess accurately if the evaluation does not take into account how humans actually see and interpret irregular visual patterns.
+          </p>
+          <p>
+            This work introduces a perceptual index grounded in the human visual system, aiming to provide a more meaningful quantitative measure for Mura evaluation. By incorporating perceptual characteristics, the method seeks to improve the correspondence between numerical assessment and visual experience.
+          </p>
+
+          <!--
+            KR 해석:
+            이 논문의 핵심 출발점은 시각적 결함에 대한 객관적 평가가 인간의 지각과 더 잘 일치해야 한다는 점입니다.
+            Mura는 비균일한 시각적 결함을 의미하며,
+            사람이 실제로 어떤 방식으로 불규칙한 패턴을 인식하는지를 고려하지 않으면 정확한 평가가 어려울 수 있습니다.
+            이를 위해 human visual system에 기반한 perceptual index를 제안하고,
+            수치 평가와 실제 시각 경험 사이의 대응을 높이고자 했습니다.
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Method Summary</h2>
+          <ul>
+            <li>Proposes a quantitative Mura evaluation index based on the human visual system</li>
+            <li>Aims to incorporate perceptual characteristics into visual defect assessment</li>
+            <li>Bridges objective numerical evaluation with perceived visual quality</li>
+            <li>Supports more meaningful analysis of non-uniform visual defects</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - human visual system에 기반한 quantitative Mura evaluation index를 제안합니다.
+            - 시각적 결함 평가에 perceptual characteristic을 반영하는 것을 목표로 합니다.
+            - 객관적 수치 평가와 지각된 시각 품질 간의 연결을 강화합니다.
+            - 비균일 시각 결함에 대한 보다 의미 있는 분석을 지원합니다.
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Key Contributions</h2>
+          <ul>
+            <li>Introduced a perceptual index for quantitative Mura evaluation</li>
+            <li>Emphasized the importance of human visual characteristics in visual quality assessment</li>
+            <li>Improved understanding of the relationship between defect metrics and perceptual experience</li>
+            <li>Contributed to practical image quality and display defect analysis research</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - quantitative Mura evaluation을 위한 perceptual index 제안
+            - visual quality assessment에서 human visual characteristic의 중요성 강조
+            - defect metric과 perceptual experience 간 관계에 대한 이해 확장
+            - practical image quality 및 display defect analysis 연구에 기여
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;" id="citation">Citation</h2>
+          <div class="citation-box">
+            J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, J. S. Byun, and S. I. Cho, “Human Visual System-based Perceptual Mura Index for Quantitative Mura Evaluation,” Measurement, 2024.
+          </div>
+
+          <!--
+            KR 해석:
+            논문 인용문을 바로 복사할 수 있도록 Citation 박스를 추가했습니다.
+          -->
+        </div>
+
+        <aside class="summary-card">
+          <div class="summary-block">
+            <span class="small-label">Authors</span>
+            <p>J. H. Park, J. H. Kim, B. H. Ngo, J. E. Kwon, S.-G. Park, J. S. Byun, and S. I. Cho</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Publication Info</span>
+            <p>Measurement</p>
+            <p><em>CiteScore 11.5 · IF 5.6</em></p>
+            <p>2024</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Keywords</span>
+            <div class="chip-list">
+              <span class="chip">Mura Evaluation</span>
+              <span class="chip">Perceptual Quality</span>
+              <span class="chip">Human Visual System</span>
+              <span class="chip">Quantitative Evaluation</span>
+            </div>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Paper Focus</span>
+            <ul>
+              <li>Perceptual defect evaluation</li>
+              <li>Human visual system-based modeling</li>
+              <li>Quantitative quality assessment</li>
+              <li>Display and image quality analysis</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Note</span>
+            <p>
+              If a DOI or direct article page is later preferred, an external paper link button can be added in the hero section. For now, this page keeps the same clean publication-page structure as the others.
+            </p>
+          </div>
+
+          <!--
+            KR 해석:
+            오른쪽 요약 카드에는 저자, 출판 정보, 키워드, 논문 초점, 메모를 정리했습니다.
+            필요 시 추후 DOI나 논문 링크 버튼을 hero 영역에 추가할 수 있습니다.
+          -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Jisun Byun. All rights reserved.</div>
+  </footer>
+</body>
+</html>
