@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenAI-based Atari Game Playing AI Implementation | Jisun Byun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!--
+    KR 해석:
+    openai-atari-ai.html 샘플 상세 페이지입니다.
+    index.html과 최대한 통일감 있게 흰색 + 밝은 회색 + 파스텔 연두색 하이라이트 톤을 유지했습니다.
+
+    수정 포인트:
+    1) 썸네일 이미지 경로 변경: assets/projects/project-06.jpg
+    2) GitHub 링크가 있으면 buttons 영역에 추가
+    3) 프로젝트 상세 내용(역할, 기술, 결과)을 실제 내용에 맞게 보완
+    4) index.html 내 링크 경로와 이 파일의 저장 위치가 일치하는지 확인
+       - 예: projects/openai-atari-ai.html
+  -->
+
+  <style>
+    :root {
+      --bg: #f5f6f5;
+      --bg-soft: #f0f1f0;
+      --white: #ffffff;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: #e3e6e2;
+      --text: #202521;
+      --text-soft: #5c6560;
+      --title: #151915;
+      --accent: #95c973;
+      --accent-deep: #6ea34c;
+      --accent-soft: #eef7e7;
+      --shadow: 0 12px 34px rgba(44, 54, 47, 0.07);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(210, 230, 196, 0.18), transparent 28%),
+        linear-gradient(180deg, #fbfbfb 0%, #f3f4f3 100%);
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .navbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(250, 250, 250, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--title);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-soft);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+
+    .section {
+      padding: 42px 0 78px;
+    }
+
+    .hero-card,
+    .content-card,
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      border: 1px solid #d7e7c9;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .project-title {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: var(--title);
+    }
+
+    .project-meta {
+      margin: 0 0 16px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .project-desc {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      margin-top: 26px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .primary-btn {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 12px 26px rgba(116, 162, 84, 0.25);
+    }
+
+    .secondary-btn {
+      color: var(--title);
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .content-card,
+    .summary-card {
+      padding: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--title);
+    }
+
+    .content-card p,
+    .summary-card p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+    }
+
+    .content-card ul,
+    .summary-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-soft);
+    }
+
+    .content-card li + li,
+    .summary-card li + li {
+      margin-top: 8px;
+    }
+
+    .summary-block + .summary-block {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--accent-deep);
+      letter-spacing: 0.02em;
+    }
+
+    footer {
+      padding: 0 0 46px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card,
+      .content-card,
+      .summary-card {
+        padding: 22px;
+      }
+
+      .project-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-wrap">
+    <div class="container navbar">
+      <a class="brand" href="../index.html">Jisun Byun</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Back to Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#details">Details</a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="hero-card">
+        <div class="chip-list">
+          <span class="chip">Personal / Academic Project</span>
+          <span class="chip">2022.03 – 2022.06</span>
+          <span class="chip">Deep Learning</span>
+          <span class="chip">Reinforcement Learning</span>
+        </div>
+
+        <h1 class="project-title">OpenAI-based Atari Game Playing AI Implementation</h1>
+        <p class="project-meta">Undergraduate Project</p>
+        <p class="project-desc">
+          This project explored how AI can interact with dynamic environments through game playing. I implemented a deep learning-based Atari game playing AI and focused on improving interaction performance through action refinement and image processing strategies.
+        </p>
+
+        <!--
+          KR 해석:
+          이 프로젝트는 AI가 동적인 환경과 어떻게 상호작용할 수 있는지를 게임 환경에서 탐구한 프로젝트입니다.
+          딥러닝 기반 Atari 게임 플레이 AI를 구현하고, 행동 전략 개선과 영상 처리 기법을 통해 상호작용 성능 향상에 집중했습니다.
+        -->
+
+        <div class="actions">
+          <a class="primary-btn" href="../index.html#projects">Back to Projects</a>
+          <a class="secondary-btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+
+        <img class="hero-image" src="../assets/projects/project-06.jpg" alt="OpenAI-based Atari Game Playing AI project image" />
+      </div>
+
+      <div class="content-grid" id="details">
+        <div class="content-card">
+          <h2 class="section-title">Project Overview</h2>
+          <p>
+            The goal of this project was to build an AI agent capable of playing Atari games and to understand how learning-based agents can improve performance in interactive environments. Through this project, I gained practical experience in AI implementation, model behavior analysis, and iterative refinement of decision-making strategies.
+          </p>
+          <p>
+            A key focus was not only making the agent learn, but also improving the quality of interaction by refining how actions were selected and how visual inputs were processed. This project became an important starting point for my interest in AI and later Vision AI research.
+          </p>
+
+          <!--
+            KR 해석:
+            이 프로젝트의 목표는 Atari 게임을 플레이할 수 있는 AI 에이전트를 구현하고,
+            학습 기반 에이전트가 상호작용 환경에서 어떻게 성능을 향상시키는지 이해하는 것이었습니다.
+            단순히 학습이 되도록 하는 것뿐 아니라, 행동 선택 방식과 입력 영상 처리를 개선하여 상호작용 품질을 높이는 데 중점을 두었습니다.
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">What I Worked On</h2>
+          <ul>
+            <li>Implemented an Atari game playing AI based on deep learning methods</li>
+            <li>Refined the action strategy to reduce unnecessary actions and improve agent behavior</li>
+            <li>Applied image processing techniques to support more effective game-state understanding</li>
+            <li>Analyzed model performance and interaction quality in a dynamic game environment</li>
+          </ul>
+
+          <!--
+            KR 해석:
+            - 딥러닝 기반 Atari 게임 플레이 AI 구현
+            - 불필요한 행동을 줄이고 에이전트 동작을 개선하기 위한 행동 전략 조정
+            - 게임 상태 이해를 돕기 위한 영상 처리 기법 적용
+            - 동적 게임 환경에서 모델 성능과 상호작용 품질 분석
+          -->
+
+          <h2 class="section-title" style="margin-top: 34px;">Outcome</h2>
+          <p>
+            This project helped me build my first hands-on understanding of AI development in an interactive environment. It also became the foundation for my continued interest in computer vision, deep learning, and practical AI systems that can perceive and respond to changing conditions.
+          </p>
+
+          <!--
+            KR 해석:
+            이 프로젝트를 통해 상호작용 환경에서의 AI 개발을 처음으로 직접 경험할 수 있었고,
+            이후 computer vision, deep learning, practical AI systems에 대한 관심으로 이어지는 기반이 되었습니다.
+          -->
+        </div>
+
+        <aside class="summary-card">
+          <div class="summary-block">
+            <span class="small-label">Role</span>
+            <p>Project Implementation / AI Model Development</p>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Keywords</span>
+            <div class="chip-list">
+              <span class="chip">Atari Game AI</span>
+              <span class="chip">Deep Learning</span>
+              <span class="chip">Reinforcement Learning</span>
+              <span class="chip">Image Processing</span>
+            </div>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Tech Stack</span>
+            <ul>
+              <li>Python</li>
+              <li>Deep Learning Frameworks</li>
+              <li>Game Environment Simulation</li>
+              <li>Image Processing</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <span class="small-label">Project Note</span>
+            <p>
+              This page is a sample detail page template and can be expanded later with results, figures, demo videos, or repository links.
+            </p>
+          </div>
+
+          <!--
+            KR 해석:
+            오른쪽 요약 카드에는 역할, 키워드, 기술 스택, 메모 등을 넣었습니다.
+            나중에 데모 영상, 성능 결과, GitHub 링크, 발표 자료 등을 추가해 확장할 수 있습니다.
+          -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Jisun Byun. All rights reserved.</div>
+  </footer>
+</body>
+</html>
