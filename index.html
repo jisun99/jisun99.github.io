@@ -55,7 +55,6 @@
       --max-width: 1180px;
     }
 
-
     /*
       --------------------------------------------
       2. 기본 리셋 및 공통 스타일
@@ -117,6 +116,100 @@
       gap: 22px;
     }
 
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(216, 231, 207, 0.9);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--accent-deep);
+      border: 1px solid #cfe5c2;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      background: var(--card-strong);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      font-weight: 600;
+      color: var(--title);
+    }
+
+    .pill-link:hover {
+      transform: translateY(-2px);
+      background: #fcfffa;
+      border-color: var(--mint-deep);
+    }
+
+    .soft-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: #f4f8ef;
+      border: 1px solid #dce8d1;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--accent-deep);
+      letter-spacing: 0.02em;
+    }
+
+    /*
+      --------------------------------------------
+      3. 상단 고정 네비게이션
+      --------------------------------------------
+      섹션 이동이 가능하도록 anchor 링크를 사용합니다.
+    */
+    .navbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(250, 250, 250, 0.82);
+      border-bottom: 1px solid rgba(226, 229, 225, 0.9);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--title);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
 
     .nav-links a {
@@ -189,7 +282,120 @@
       box-shadow: 0 12px 28px rgba(79, 137, 59, 0.22);
     }
 
- 
+    .primary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid rgba(226, 229, 225, 0.95);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #eff8ea;
+      background: linear-gradient(135deg, #dcedcf, #f8fcf5);
+      box-shadow: 0 8px 24px rgba(74, 111, 54, 0.14);
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 1.35rem;
+      color: var(--title);
+    }
+
+    .profile-role {
+      margin: 6px 0 0;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .stat-box {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.95);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--accent-deep);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
+
+    /*
+      --------------------------------------------
+      5. About / Research / Experience / Projects 등
+      --------------------------------------------
+    */
+    .about-grid,
+    .research-grid,
+    .experience-grid,
+    .projects-grid,
+    .publication-grid,
+    .education-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+
+    .research-grid,
+    .publication-grid,
+    .education-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .experience-grid,
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--mint-deep), var(--accent));
+    }
 
     .timeline-card h3,
     .project-card h3,
@@ -267,7 +473,68 @@
       margin-top: 24px;
     }
 
+    footer {
+      padding: 32px 0 52px;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 0.95rem;
+    }
 
+    /*
+      --------------------------------------------
+      7. 반응형 처리
+      --------------------------------------------
+      태블릿/모바일에서도 읽기 편하도록 레이아웃을 재배치합니다.
+    */
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .research-grid,
+      .publication-grid,
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 70px 0;
+      }
+
+      .hero-main,
+      .profile-card,
+      .card,
+      .contact-card {
+        padding: 22px;
+      }
+
+      .quick-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    ============================================
+    상단 네비게이션
+    ============================================
+    - 각 섹션으로 부드럽게 이동하는 anchor 링크
+    - GitHub Pages 개인 포트폴리오에 자주 쓰이는 구조
   -->
   <div class="navbar-wrap">
     <div class="container navbar">
@@ -340,7 +607,44 @@
         </div>
       </div>
 
+      <div class="hero-side">
+        <div class="profile-card">
+          <!--
+            KR 해석:
+            실제 프로필 사진을 사용할 경우 repository 내 이미지 경로로 변경하세요.
+          -->
+          <img
+            class="profile-avatar"
+            src="https://via.placeholder.com/300x300.png?text=Jisun+Byun"
+            alt="Jisun Byun profile image"
+          />
+          <h2 class="profile-name">Jisun Byun</h2>
+          <p class="profile-role">
+            Senior AI Researcher · Vision AI · 2D/3D Computer Vision
+          </p>
+        </div>
 
+        <div class="quick-stats">
+          <div class="stat-box">
+            <span class="stat-number">2D + 3D</span>
+            <span class="stat-label">Vision AI Expertise</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">EAAI</span>
+            <span class="stat-label">Accepted Journal Paper</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">HD KSOE</span>
+            <span class="stat-label">Industrial AI Experience</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">3D Human</span>
+            <span class="stat-label">Research Focus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!--
     ============================================
@@ -390,7 +694,38 @@
     </div>
   </section>
 
+  <!--
+    ============================================
+    Research 섹션
+    ============================================
+    - 사용자의 관심 분야를 카드 형태로 나열
+    - 시각적으로 한눈에 전문 분야를 보여주기 위함
+  -->
+  <section class="section" id="research">
+    <div class="container">
+      <h2 class="section-title">Research</h2>
+      <p class="section-subtitle">
+        2D perception부터 3D human understanding까지 이어지는 연구 관심사
+      </p>
 
+      <div class="research-grid">
+        <article class="card research-card">
+          <h3>2D Object Detection</h3>
+          <p>
+            산업 환경에서 활용 가능한 object detection 모델을 개발하고,
+            실제 데이터와 배포 환경을 고려한 강인한 시각 인식 성능 향상에 관심이 있습니다.
+          </p>
+        </article>
+
+        <article class="card research-card">
+          <h3>3D Point Cloud Processing</h3>
+          <p>
+            포인트 클라우드 기반의 3D human data를 처리하고 분석하며,
+            구조적 정보와 지역적 특징을 효과적으로 활용하는 표현 학습을 연구합니다.
+          </p>
+        </article>
+
+        <article class="card research-card">
           <h3>Human Landmark Detection</h3>
           <p>
             인체 스캔 데이터에서 해부학적 landmark를 보다 정밀하게 탐지하기 위한
@@ -449,6 +784,30 @@
     </div>
   </section>
 
+  <!--
+    ============================================
+    Projects 섹션
+    ============================================
+    - 프로젝트별로 무엇을 했는지 간단히 설명
+    - 사내 프로젝트는 보안상 세부 목적/시스템명을 최소화하고
+      역할과 기술 중심으로 서술
+  -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        산업 응용부터 국가 과제, 대학원 연구 프로젝트까지
+      </p>
+
+      <div class="projects-grid">
+        <article class="card project-card">
+          <h3>In-house Vision AI Project for Industrial Quality Inspection</h3>
+          <p class="meta">HD Hyundai · 2026.01 – Present</p>
+          <p>
+            산업 현장의 품질 검사 환경을 대상으로 Vision AI 모델을 개발하는 사내 프로젝트입니다.
+            실제 배포 가능성을 고려한 detection robustness와 practical applicability 향상에 중점을 두고 있습니다.
+          </p>
+        </article>
 
         <article class="card project-card">
           <h3>In-house Object Detection-based Vision AI Project for Quality Analysis</h3>
@@ -498,7 +857,15 @@
     </div>
   </section>
 
-
+  <!--
+    ============================================
+    Publications 섹션
+    ============================================
+    - 논문 목록을 카테고리 형태로 분리
+    - DOI 또는 논문 링크가 있으면 오른쪽에 버튼 추가 가능
+  -->
+  <section class="section" id="publications">
+    <div class="container">
       <h2 class="section-title">Publications</h2>
       <p class="section-subtitle">
         International journals, conferences, and domestic conference publications
@@ -572,8 +939,11 @@
     - 학력 정보 요약
     - 필요시 GPA, thesis title, advisor 등을 추가 가능
   -->
-
   <section class="section" id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">
+        Multimedia Engineering에서 AI Software Convergence까지 이어진 학업 배경
       </p>
 
       <div class="education-grid">
@@ -647,4 +1017,3 @@
   </script>
 </body>
 </html>
-    
