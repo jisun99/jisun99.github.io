@@ -355,11 +355,9 @@
         </div>
 
         <div class="chip-list" style="margin-bottom: 4px;">
-          <span class="chip">3D Human Point Cloud</span>
+          <span class="chip">Human Point Cloud</span>
           <span class="chip">Anthropometric Landmark Detection</span>
-          <span class="chip">Dynamic-invariant</span>
-          <span class="chip">Static-specific</span>
-          <span class="chip">ALTNet</span>
+          <span class="chip">Parametric Human Model</span>
         </div>
 
         <h1 class="paper-title">Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h1>
@@ -369,34 +367,48 @@
         </p>
 
         <div class="actions">
-          <a class="secondary-btn" href="https://www.sciencedirect.com/journal/engineering-applications-of-artificial-intelligence" target="_blank" rel="noreferrer">Journal Page</a>
+          <a class="secondary-btn" href="https://www.sciencedirect.com/science/article/pii/S0952197626010456?casa_token=3uCcCCMaMGsAAAAA:kJII21OS25KYkeqi5OkR5_ogHOIiGJv53SSmYeyoImvF0-hB8XfRP3WgOF15JjiadOZR21d6mOLX" target="_blank" rel="noreferrer">Journal Page</a>
           <a class="secondary-btn" href="#citation">Citation</a>
         </div>
 
-        <img class="hero-image" src="../assets/publications/paper-01-hero.png" alt="Overview figure of the two-stage anthropometric landmark detection framework" />
+        <img class="hero-image" src="../assets/publications/paper-01-2.png" alt="Overview figure of the two-stage anthropometric landmark detection framework" />
       </div>
 
       <div class="content-grid" style="margin-top: 22px;">
         <div class="content-card">
-          <h2 class="section-title">Research Motivation</h2>
+          <!-- <h2 class="section-title">Research Motivation</h2>
           <p>
-            Anthropometric landmark detection is a fundamental task for human body measurement, ergonomic analysis, and digital human understanding. However, existing approaches often face a trade-off between robustness and precision. Methods operating directly on the input point cloud may achieve locally accurate predictions, but they are often sensitive to posture variation and geometric deformation. In contrast, methods relying on a parametric human template can offer more stable anatomical correspondence, yet they do not directly provide the final landmark position on the original input surface.
+            Anthropometric landmark detection is a fundamental task for human body measurement, ergonomic analysis, and digital human understanding.
+            However, existing approaches often face a trade-off between robustness and precision.
+            Traditional methods operating directly on the input point cloud may achieve locally accurate predictions, but they are often sensitive to posture variation and geometric deformation.
           </p>
           <p>
-            This work was motivated by the need to bridge these two requirements. The goal was not only to detect landmarks accurately, but also to preserve anatomical consistency across dynamic postures and then refine the prediction back onto the input point cloud. In this sense, the proposed method was designed to connect dynamic-invariant landmark estimation with static-specific geometric refinement in a single end-to-end framework.
+            This work was motivated by the need to bridge these two requirements.
+            The goal was not only to detect landmarks accurately, but also to preserve anatomical consistency across dynamic postures and then refine the prediction back onto the input point cloud. In this sense, the proposed method was designed to connect dynamic-invariant landmark estimation with static-specific geometric refinement in a single end-to-end framework.
           </p>
-
+          
           <h2 class="sub-title">Why a two-stage strategy was necessary</h2>
           <p>
             A single-stage formulation was not sufficient to fully address both posture robustness and point-level precision. If the model directly predicts landmarks only on the input point cloud, the prediction can become unstable under large posture deformation. On the other hand, if the method predicts landmarks only on the parametric template, the resulting landmark is anatomically meaningful but does not exactly correspond to the original scan surface. The two-stage design was therefore introduced to explicitly separate these two objectives while preserving their connection.
+          </p> -->
+
+          <h2 class="section-title">Research Motivation</h2>
+          <p>
+            With the rapid growth of wearable and personalized devices, there is an increasing need for technologies that can analyze human body shape and posture from 3D point cloud data. Among these, anthropometric landmark detection is a fundamental step for accurate body measurement, ergonomic assessment, and human-centered design.
+          </p>
+          <p>
+            Despite its importance, existing landmark detection methods still face clear limitations. Many studies focus on static scans or specific local regions of the body, while fewer approaches can preserve landmark consistency under dynamic posture changes. In addition, even when anatomically meaningful landmarks are estimated, obtaining precise landmark positions directly on the original input point cloud remains difficult.
+          </p>
+          <p>
+            This paper was motivated by the need to overcome these limitations. The goal was to develop a framework that can maintain landmark consistency across posture variation while also improving localization accuracy on the real input surface. To achieve this, the proposed method introduces a two-stage strategy that connects invariant landmark estimation with point-specific refinement for more practical and reliable 3D anthropometric analysis.
           </p>
 
-          <h2 class="sub-title">Core idea of the paper</h2>
+          <h2 class="sub-title">Key contributions</h2>
           <ul>
-            <li>Stage 1 establishes posture-consistent landmark estimation on a parametric human template.</li>
-            <li>Stage 2 transfers and refines those landmarks directly on the input point cloud.</li>
-            <li>The overall framework links dynamic-invariant estimation with static-specific precision.</li>
-            <li>The method enables both landmark consistency across postures and more accurate localization on the real surface.</li>
+            <li>Shape-pose invariant landmark detection: We propose a method that leverages the parametric human template model’s characteristic of maintaining a consistent index order across different shapes and poses, enabling accurate landmark detection in dynamic shapes and postures using only a single static pose scan.</li>
+            <li>Point-specific segment landmark detection in the input point cloud: Our method enhances landmark detection accuracy by refining landmark locations within specific segments of the input point cloud, based on the landmarks derived in the first stage, SI-LD.</li>
+            <li>Anthropometric landmark detection specialized feature extractor: We propose ALTNet, a feature extractor specialized for anthropometric landmark detection. ALTNet captures localized features around landmarks and integrates them with global features from the full-body, enabling more precise detection by focusing on landmark-specific regions that existing methods may overlook.</li>
+            <li>Comprehensive experiments on a large national-scale practical dataset: Our method demonstrated robust and consistent landmark detection performance across various dynamic postures on a large-scale practical dataset from South Korea, named the 8th SizeKorea dataset (KATRi Size Korea Center, 2020–2023). It outperformed existing methods in terms of landmark detection accuracy.</li>
           </ul>
         </div>
 
@@ -416,11 +428,13 @@
           <div class="summary-block">
             <span class="small-label">Keywords</span>
             <div class="chip-list">
-              <span class="chip">3D Human Point Cloud</span>
               <span class="chip">Landmark Detection</span>
-              <span class="chip">Geodesic Heatmap</span>
-              <span class="chip">ALTNet</span>
-              <span class="chip">Human Body Analysis</span>
+              <span class="chip">Anthropometric Landmark</span>
+              <span class="chip">Human Point Cloud</span>
+              <span class="chip">Parametric Human Model</span>
+              <span class="chip">Wearable Devices</span>
+              <span class="chip">Artificial Intelligence</span>
+
             </div>
           </div>
 
