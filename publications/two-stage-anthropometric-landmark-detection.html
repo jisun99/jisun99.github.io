@@ -371,7 +371,7 @@
           <a class="secondary-btn" href="#citation">Citation</a>
         </div>
 
-        <img class="hero-image" src="../assets/publications/paper-01-2.png" alt="Overview figure of the two-stage anthropometric landmark detection framework" />
+        <img class="hero-image" src="../assets/publications/paper-01.png" alt="Overview result figure of the two-stage anthropometric landmark detection framework" />
       </div>
 
       <div class="content-grid" style="margin-top: 22px;">
@@ -400,15 +400,15 @@
             Despite its importance, existing landmark detection methods still face clear limitations. Many studies focus on static scans or specific local regions of the body, while fewer approaches can preserve landmark consistency under dynamic posture changes. In addition, even when anatomically meaningful landmarks are estimated, obtaining precise landmark positions directly on the original input point cloud remains difficult.
           </p>
           <p>
-            This paper was motivated by the need to overcome these limitations. The goal was to develop a framework that can maintain landmark consistency across posture variation while also improving localization accuracy on the real input surface. To achieve this, the proposed method introduces a two-stage strategy that connects invariant landmark estimation with point-specific refinement for more practical and reliable 3D anthropometric analysis.
+            This paper was motivated by the need to overcome these limitations. The goal was to develop a framework that can maintain landmark consistency across posture variation while also improving localization accuracy on the real input surface. To achieve this, the proposed method introduces a two-stage strategy that connects invariant landmark estimation (SI-LD) with point-specific refinement (PI-LD) for more practical and reliable 3D anthropometric analysis.
           </p>
 
           <h2 class="sub-title">Key contributions</h2>
           <ul>
-            <li>Shape-pose invariant landmark detection: We propose a method that leverages the parametric human template model’s characteristic of maintaining a consistent index order across different shapes and poses, enabling accurate landmark detection in dynamic shapes and postures using only a single static pose scan.</li>
-            <li>Point-specific segment landmark detection in the input point cloud: Our method enhances landmark detection accuracy by refining landmark locations within specific segments of the input point cloud, based on the landmarks derived in the first stage, SI-LD.</li>
-            <li>Anthropometric landmark detection specialized feature extractor: We propose ALTNet, a feature extractor specialized for anthropometric landmark detection. ALTNet captures localized features around landmarks and integrates them with global features from the full-body, enabling more precise detection by focusing on landmark-specific regions that existing methods may overlook.</li>
-            <li>Comprehensive experiments on a large national-scale practical dataset: Our method demonstrated robust and consistent landmark detection performance across various dynamic postures on a large-scale practical dataset from South Korea, named the 8th SizeKorea dataset (KATRi Size Korea Center, 2020–2023). It outperformed existing methods in terms of landmark detection accuracy.</li>
+            <li><strong>Shape-pose invariant landmark detection (SI-LD)</strong>: We propose a method that leverages the parametric human template model’s characteristic of maintaining a consistent index order across different shapes and poses, enabling accurate landmark detection in dynamic shapes and postures using only a single static pose scan.</li>
+            <li><strong>Point-specific segment landmark detection in the input point cloud (PI-LD)</strong>: Our method enhances landmark detection accuracy by refining landmark locations within specific segments of the input point cloud, based on the landmarks derived in the first stage, SI-LD.</li>
+            <li><strong>Anthropometric landmark detection specialized feature extractor (ALTNet)</strong>: We propose ALTNet, a feature extractor specialized for anthropometric landmark detection. ALTNet captures localized features around landmarks and integrates them with global features from the full-body, enabling more precise detection by focusing on landmark-specific regions that existing methods may overlook.</li>
+            <li><strong>Comprehensive experiments on a large national-scale practical dataset</strong>: Our method demonstrated robust and consistent landmark detection performance across various dynamic postures on a large-scale practical dataset from South Korea, named the 8th SizeKorea dataset (KATRi Size Korea Center, 2020–2023). It outperformed existing methods in terms of landmark detection accuracy.</li>
           </ul>
         </div>
 
@@ -453,9 +453,9 @@
       <div class="wide-stack" id="framework">
         <div class="figure-card">
           <h2 class="section-title">Proposed Framework</h2>
-          <img class="figure-image" src="../assets/publications/paper-01-framework.png" alt="Framework figure showing SI-LD and PI-LD" />
+          <img class="figure-image" src="../assets/publications/paper-01-2.png" alt="Framework figure showing SI-LD and PI-LD" />
           <p class="figure-caption">
-            The overall framework consists of two stages: shape-pose invariant landmark detection (SI-LD) for consistent landmark estimation on the parametric template, followed by point-specific landmark detection (PI-LD) for refined prediction directly on the input point cloud.
+            The proposed framework consists of two sequential stages. First, shape-pose invariant landmark detection (SI-LD) estimates anatomically consistent landmarks on a parametric human template. Then, point-specific landmark detection (PI-LD) refines those landmarks directly on the input point cloud to improve localization accuracy on the original surface.
           </p>
         </div>
 
