@@ -469,9 +469,9 @@
               This stage plays a critical role in the overall framework because it provides a stable landmark reference that is less sensitive to deformation. In other words, SI-LD is responsible for the dynamic-invariant characteristic of the proposed method. It allows the same anatomical landmark concept to be maintained across different postures, which is essential for practical anthropometric analysis in non-static settings.
             </p>
 
-            <h2 class="sub-title">Why heatmap-based landmark prediction was used</h2>
+            <h2 class="sub-title">Why geodesic heatmap-based landmark prediction was used</h2>
             <p>
-              Rather than directly regressing landmark coordinates, the method adopts a heatmap-based formulation. This design better preserves spatial structure and reduces the instability that can arise when multiple plausible surface candidates exist near the target region. In this work, the target heatmap is defined using geodesic distance on the surface so that the landmark representation better reflects intrinsic body geometry even under posture variation.
+              Rather than directly regressing landmark coordinates, the method adopts a geodesic heatmap-based formulation. This design better preserves spatial structure and reduces the instability that can arise when multiple plausible surface candidates exist near the target region. In this work, the target heatmap is defined using geodesic distance on the surface so that the landmark representation better reflects intrinsic body geometry even under posture variation.
             </p>
           </div>
 
@@ -537,13 +537,14 @@
         </div>
 
         <div class="wide-card">
-          <h2 class="section-title">ALTNet and Geodesic Heatmap Design</h2>
+          <h2 class="section-title">Anthropometric Landmark Detection Network (ALTNet)</h2>
           <p>
-            A key component of the proposed framework is ALTNet, a feature extraction network designed to better capture landmark-oriented geometry. ALTNet extends global-local point cloud representation by explicitly emphasizing the regions surrounding landmarks, which is particularly important for anthropometric landmark detection where subtle local geometric cues matter.
+            A key component of the proposed framework is ALTNet, a feature extraction network designed to better capture landmark-oriented geometry.
+            ALTNet extends global-local point cloud representation by explicitly emphasizing the regions surrounding landmarks, which is particularly important for anthropometric landmark detection where subtle local geometric cues matter.
           </p>
-          <p>
+          <!-- <p>
             In addition, the method uses geodesic heatmap representation rather than simple Euclidean-distance-based labeling. This design is important because human body surfaces undergo non-rigid deformation under pose changes, and geodesic distance better reflects intrinsic surface relationships than straight-line Euclidean distance. Together, ALTNet and geodesic heatmap learning support both the stability of SI-LD and the precision of PI-LD.
-          </p>
+          </p> -->
         </div>
       </div>
 
@@ -599,7 +600,7 @@
         <div class="wide-card" id="citation">
           <h2 class="section-title">Citation</h2>
           <div class="citation-box">
-            J. S. Byun, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho, “Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy,” Engineering Applications of Artificial Intelligence, Accepted, 2026.
+            Byun, Ji Sun, et al. "Two-stage anthropometric landmark detection framework on human point cloud: Dynamic-invariant and static-specific strategy." Engineering Applications of Artificial Intelligence 176 (2026): 114763.
           </div>
         </div>
       </div>
