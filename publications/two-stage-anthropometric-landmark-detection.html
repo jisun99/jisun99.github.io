@@ -8,23 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!--
-    KR 해석:
-    two-stage-anthropometric-landmark-detection.html 논문 상세 페이지입니다.
-    프로젝트 상세 페이지와 톤은 유사하게 유지하되,
-    구성은 논문 중심으로 재정리했습니다.
-
-    저장 경로 예시:
-    - publications/two-stage-anthropometric-landmark-detection.html
-
-    이미지 경로 예시:
-    - ../assets/publications/paper-01.jpg
-
-    논문 바로가기 버튼:
-    - 아직 최종 온라인 페이지가 없다면 저널 페이지나 DOI 링크로 교체 가능
-    - 현재는 placeholder 링크를 넣어두었으니 추후 실제 논문 페이지로 변경하세요
-  -->
-
   <style>
     :root {
       --bg: #f5f6f5;
@@ -42,7 +25,7 @@
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
-      --max-width: 980px;
+      --max-width: 1040px;
     }
 
     * {
@@ -124,15 +107,24 @@
 
     .hero-card,
     .content-card,
-    .summary-card {
+    .summary-card,
+    .figure-card,
+    .wide-card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
     }
 
+    .hero-card,
+    .content-card,
+    .summary-card,
+    .figure-card,
+    .wide-card {
+      padding: 30px;
+    }
+
     .hero-card {
-      padding: 34px;
       overflow: hidden;
     }
 
@@ -176,23 +168,15 @@
       font-size: 1.02rem;
     }
 
-    /* .hero-image {
-      width: 100%;
-      aspect-ratio: 16 / 8;
-      object-fit: cover;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: linear-gradient(135deg, #f4f5f4, #ffffff);
-      margin-top: 26px;
-    } */
-
-    .hero-image {
+    .hero-image,
+    .figure-image {
       width: 100%;
       height: auto;
       object-fit: contain;
       border-radius: 20px;
       border: 1px solid var(--line);
-      background: linear-gradient(135deg, #f4f5f4, #ffffff);
+      background: #ffffff;
+      padding: 8px;
       margin-top: 26px;
     }
 
@@ -234,14 +218,9 @@
 
     .content-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
+      grid-template-columns: 1.45fr 0.85fr;
       gap: 22px;
       margin-top: 26px;
-    }
-
-    .content-card,
-    .summary-card {
-      padding: 28px;
     }
 
     .section-title {
@@ -252,21 +231,33 @@
       color: var(--title);
     }
 
+    .sub-title {
+      margin: 30px 0 14px;
+      font-size: 1.12rem;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--title);
+    }
+
     .content-card p,
-    .summary-card p {
+    .summary-card p,
+    .wide-card p,
+    .figure-card p {
       margin: 0 0 12px;
       color: var(--text-soft);
     }
 
     .content-card ul,
-    .summary-card ul {
+    .summary-card ul,
+    .wide-card ul {
       margin: 0;
       padding-left: 20px;
       color: var(--text-soft);
     }
 
     .content-card li + li,
-    .summary-card li + li {
+    .summary-card li + li,
+    .wide-card li + li {
       margin-top: 8px;
     }
 
@@ -285,6 +276,18 @@
       letter-spacing: 0.02em;
     }
 
+    .figure-caption {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    .wide-stack {
+      display: grid;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
     .citation-box {
       padding: 16px 18px;
       border-radius: 16px;
@@ -301,7 +304,7 @@
       font-size: 0.94rem;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       .content-grid {
         grid-template-columns: 1fr;
       }
@@ -316,7 +319,9 @@
 
       .hero-card,
       .content-card,
-      .summary-card {
+      .summary-card,
+      .figure-card,
+      .wide-card {
         padding: 22px;
       }
 
@@ -333,7 +338,8 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="../index.html">Back to Home</a>
         <a href="#overview">Overview</a>
-        <a href="#details">Details</a>
+        <a href="#framework">Framework</a>
+        <a href="#results">Results</a>
       </nav>
     </div>
   </div>
@@ -347,92 +353,51 @@
           </div>
           <a class="primary-btn" href="../index.html#publications" style="margin-left: auto; flex: 0 0 auto;">Back to Publications</a>
         </div>
+
         <div class="chip-list" style="margin-bottom: 4px;">
           <span class="chip">3D Human Point Cloud</span>
           <span class="chip">Anthropometric Landmark Detection</span>
-          <span class="chip">Deep Learning</span>
+          <span class="chip">Dynamic-invariant</span>
+          <span class="chip">Static-specific</span>
+          <span class="chip">ALTNet</span>
         </div>
 
         <h1 class="paper-title">Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy</h1>
         <p class="paper-meta">Engineering Applications of Artificial Intelligence <span style="margin-left: 10px;">Accepted · 2026</span></p>
         <p class="paper-desc">
-          This paper presents a two-stage framework for anthropometric landmark detection on 3D human point clouds. The proposed method is designed to handle dynamic posture variation while also improving point-level precision through localized refinement on the input data.
+          This paper proposes a two-stage framework for anthropometric landmark detection on 3D human point clouds. The proposed method is designed to preserve landmark consistency under dynamic posture variation through a shape-pose invariant stage and to further improve point-level precision on the original input surface through a point-specific refinement stage. By combining robustness and precision within a unified framework, the work aims to make landmark detection more reliable for practical 3D human body analysis.
         </p>
 
-        <!--
-          KR 해석:
-          이 논문은 3D 인체 포인트 클라우드에서 anthropometric landmark를 탐지하기 위한 two-stage framework를 제안합니다.
-          제안 방법은 동적 자세 변화에 강인하게 대응하면서도,
-          입력 데이터 상에서의 국소 정밀 보정을 통해 point-level precision을 향상시키도록 설계되었습니다.
-        -->
-
         <div class="actions">
-          <a class="secondary-btn" href="https://www.sciencedirect.com/science/article/pii/S0952197626010456?casa_token=rSNhumcglY8AAAAA:YfQDHUrvyoKiXfYgbg48BHzyiBvMC3ek3_Cooz3V8DlW-ziFv8G06iISPFArw0KjpUCucSRQ7A" target="_blank" rel="noreferrer">Journal Page</a>
+          <a class="secondary-btn" href="https://www.sciencedirect.com/journal/engineering-applications-of-artificial-intelligence" target="_blank" rel="noreferrer">Journal Page</a>
           <a class="secondary-btn" href="#citation">Citation</a>
         </div>
 
-        <img class="hero-image" src="../assets/publications/paper-01-2.png" alt="Two-stage anthropometric landmark detection paper image" />
+        <img class="hero-image" src="../assets/publications/paper-01-hero.png" alt="Overview figure of the two-stage anthropometric landmark detection framework" />
       </div>
 
-      <div class="content-grid" id="details">
+      <div class="content-grid" style="margin-top: 22px;">
         <div class="content-card">
-          <h2 class="section-title">Paper Overview</h2>
+          <h2 class="section-title">Research Motivation</h2>
           <p>
-            The main goal of this paper is to improve landmark detection on 3D human point clouds under posture variation. Existing approaches often struggle either with dynamic body deformation or with obtaining precise landmarks directly on the original input surface. To address these limitations, the paper introduces a two-stage strategy that first estimates posture-invariant landmarks and then refines them on the input point cloud.
+            Anthropometric landmark detection is a fundamental task for human body measurement, ergonomic analysis, and digital human understanding. However, existing approaches often face a trade-off between robustness and precision. Methods operating directly on the input point cloud may achieve locally accurate predictions, but they are often sensitive to posture variation and geometric deformation. In contrast, methods relying on a parametric human template can offer more stable anatomical correspondence, yet they do not directly provide the final landmark position on the original input surface.
           </p>
           <p>
-            This work connects robustness and precision within a unified framework, enabling more reliable anthropometric landmark detection across both static and dynamic postures.
+            This work was motivated by the need to bridge these two requirements. The goal was not only to detect landmarks accurately, but also to preserve anatomical consistency across dynamic postures and then refine the prediction back onto the input point cloud. In this sense, the proposed method was designed to connect dynamic-invariant landmark estimation with static-specific geometric refinement in a single end-to-end framework.
           </p>
 
-          <!--
-            KR 해석:
-            이 논문의 주요 목표는 자세 변화가 있는 3D 인체 포인트 클라우드에서 랜드마크 탐지 성능을 향상시키는 것입니다.
-            기존 방법들은 동적 인체 변형에 취약하거나, 원본 입력 표면에서 정밀한 랜드마크를 직접 얻는 데 한계가 있었습니다.
-            이를 해결하기 위해 본 논문은 먼저 posture-invariant landmark를 추정하고,
-            이후 입력 point cloud 상에서 이를 정밀 보정하는 two-stage 전략을 제안합니다.
-          -->
+          <h2 class="sub-title">Why a two-stage strategy was necessary</h2>
+          <p>
+            A single-stage formulation was not sufficient to fully address both posture robustness and point-level precision. If the model directly predicts landmarks only on the input point cloud, the prediction can become unstable under large posture deformation. On the other hand, if the method predicts landmarks only on the parametric template, the resulting landmark is anatomically meaningful but does not exactly correspond to the original scan surface. The two-stage design was therefore introduced to explicitly separate these two objectives while preserving their connection.
+          </p>
 
-          <h2 class="section-title" style="margin-top: 34px;">Method Summary</h2>
+          <h2 class="sub-title">Core idea of the paper</h2>
           <ul>
-            <li>Stage 1 estimates pose-invariant anthropometric landmarks using a parametric human template representation</li>
-            <li>Stage 2 refines landmark positions directly on the input point cloud for improved point-level accuracy</li>
-            <li>The framework combines robustness to posture variation with localized geometric refinement</li>
-            <li>Experiments validate the effectiveness of the approach on 3D human scan datasets</li>
+            <li>Stage 1 establishes posture-consistent landmark estimation on a parametric human template.</li>
+            <li>Stage 2 transfers and refines those landmarks directly on the input point cloud.</li>
+            <li>The overall framework links dynamic-invariant estimation with static-specific precision.</li>
+            <li>The method enables both landmark consistency across postures and more accurate localization on the real surface.</li>
           </ul>
-
-          <!--
-            KR 해석:
-            - 1단계에서는 parametric human template representation을 기반으로 pose-invariant anthropometric landmark를 추정합니다.
-            - 2단계에서는 입력 point cloud 상에서 landmark 위치를 직접 정밀 보정합니다.
-            - 전체 프레임워크는 자세 변화에 대한 강인성과 국소 기하 정밀 보정을 함께 달성합니다.
-            - 실험을 통해 제안 방법의 유효성을 검증했습니다.
-          -->
-
-          <h2 class="section-title" style="margin-top: 34px;">Key Contributions</h2>
-          <ul>
-            <li>Proposed a two-stage framework for 3D anthropometric landmark detection</li>
-            <li>Addressed landmark estimation under dynamic posture variation</li>
-            <li>Improved point-level precision through localized refinement on the input point cloud</li>
-            <li>Demonstrated the applicability of deep learning-based landmark detection to practical 3D human analysis</li>
-          </ul>
-
-          <!--
-            KR 해석:
-            - 3D anthropometric landmark detection을 위한 two-stage framework 제안
-            - 동적 자세 변화 상황에서의 landmark estimation 문제 해결
-            - 입력 point cloud 상의 localized refinement를 통한 정밀도 향상
-            - practical 3D human analysis에 대한 deep learning 기반 landmark detection의 적용 가능성 제시
-          -->
-
-          <h2 class="section-title" style="margin-top: 34px;" id="citation">Citation</h2>
-          <div class="citation-box">
-            J. S. Byun, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho, “Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy,” Engineering Applications of Artificial Intelligence, Accepted, 2026.
-          </div>
-
-          <!--
-            KR 해석:
-            논문 인용문을 바로 복사할 수 있도록 Citation 박스를 추가했습니다.
-          -->
         </div>
 
         <aside class="summary-card">
@@ -451,12 +416,11 @@
           <div class="summary-block">
             <span class="small-label">Keywords</span>
             <div class="chip-list">
+              <span class="chip">3D Human Point Cloud</span>
               <span class="chip">Landmark Detection</span>
-              <span class="chip">Anthropometric Landmark</span>
-              <span class="chip">Human Point Cloud</span>
-              <span class="chip">Parametric Human Model</span>
-              <span class="chip">Wearable Devices</span>
-              <span class="chip">Artificial Intelligence</span>
+              <span class="chip">Geodesic Heatmap</span>
+              <span class="chip">ALTNet</span>
+              <span class="chip">Human Body Analysis</span>
             </div>
           </div>
 
@@ -464,25 +428,166 @@
             <span class="small-label">Paper Focus</span>
             <ul>
               <li>Dynamic posture-invariant landmark estimation</li>
-              <li>Point-level refinement on input point clouds</li>
-              <li>Practical 3D human scan analysis</li>
-              <li>Two-stage deep learning framework</li>
+              <li>Point-level refinement on the original input surface</li>
+              <li>Unified two-stage 3D landmark detection framework</li>
+              <li>Practical 3D anthropometric analysis</li>
             </ul>
           </div>
+        </aside>
+      </div>
 
-          <div class="summary-block">
-            <span class="small-label">Note</span>
+      <div class="wide-stack" id="framework">
+        <div class="figure-card">
+          <h2 class="section-title">Proposed Framework</h2>
+          <img class="figure-image" src="../assets/publications/paper-01-framework.png" alt="Framework figure showing SI-LD and PI-LD" />
+          <p class="figure-caption">
+            The overall framework consists of two stages: shape-pose invariant landmark detection (SI-LD) for consistent landmark estimation on the parametric template, followed by point-specific landmark detection (PI-LD) for refined prediction directly on the input point cloud.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <div class="content-card">
+            <h2 class="section-title">Stage 1: Shape-pose Invariant Landmark Detection (SI-LD)</h2>
             <p>
-              This page can later be expanded with abstract images, method diagrams, result figures, or a direct DOI/article link once the final online paper page becomes available.
+              The first stage is designed to estimate anatomically consistent landmarks under posture variation. Instead of working directly on the raw input point cloud, the input scan is first associated with a parametric human template representation. Landmark estimation is then performed in this template domain, where consistent vertex correspondence helps preserve landmark identity even when the body shape or pose changes.
+            </p>
+            <p>
+              This stage plays a critical role in the overall framework because it provides a stable landmark reference that is less sensitive to deformation. In other words, SI-LD is responsible for the dynamic-invariant characteristic of the proposed method. It allows the same anatomical landmark concept to be maintained across different postures, which is essential for practical anthropometric analysis in non-static settings.
+            </p>
+
+            <h2 class="sub-title">Why heatmap-based landmark prediction was used</h2>
+            <p>
+              Rather than directly regressing landmark coordinates, the method adopts a heatmap-based formulation. This design better preserves spatial structure and reduces the instability that can arise when multiple plausible surface candidates exist near the target region. In this work, the target heatmap is defined using geodesic distance on the surface so that the landmark representation better reflects intrinsic body geometry even under posture variation.
             </p>
           </div>
 
-          <!--
-            KR 해석:
-            오른쪽 요약 카드에는 저자, 출판 정보, 키워드, 논문 초점, 메모를 정리했습니다.
-            추후 DOI 링크, 방법 도식, 결과 이미지 등을 추가해 확장할 수 있습니다.
-          -->
-        </aside>
+          <aside class="summary-card">
+            <div class="summary-block">
+              <span class="small-label">Role of SI-LD</span>
+              <ul>
+                <li>Provides posture-robust landmark estimation</li>
+                <li>Maintains anatomical consistency across deformation</li>
+                <li>Acts as the dynamic-invariant stage of the framework</li>
+              </ul>
+            </div>
+
+            <div class="summary-block">
+              <span class="small-label">Key Characteristics</span>
+              <ul>
+                <li>Template-based landmark reasoning</li>
+                <li>Heatmap prediction on structured surface geometry</li>
+                <li>Stable initialization for the second stage</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <div class="content-grid">
+          <div class="content-card">
+            <h2 class="section-title">Stage 2: Point-specific Landmark Detection (PI-LD)</h2>
+            <p>
+              While SI-LD provides stable anatomical landmark estimation, its output is still defined in the template domain rather than directly on the original point cloud. The second stage is therefore introduced to recover surface-specific precision. Based on the landmark estimated in Stage 1, the input point cloud is locally segmented around the corresponding region, and landmark prediction is refined directly on the input data.
+            </p>
+            <p>
+              This stage is responsible for the static-specific characteristic of the proposed method. Its purpose is to improve point-level localization by focusing on the actual geometry of the input scan, which is often much denser and more detailed than the parametric template. As a result, PI-LD complements SI-LD by translating stable landmark identity into more precise landmark positioning on the real surface.
+            </p>
+
+            <h2 class="sub-title">Why this refinement matters</h2>
+            <ul>
+              <li>The parametric template preserves correspondence but has limited geometric resolution.</li>
+              <li>The original input point cloud contains finer local surface detail.</li>
+              <li>Refinement around the predicted region improves actual landmark accuracy on the scan.</li>
+              <li>This stage links anatomical consistency with real-surface precision.</li>
+            </ul>
+          </div>
+
+          <aside class="summary-card">
+            <div class="summary-block">
+              <span class="small-label">Role of PI-LD</span>
+              <ul>
+                <li>Refines landmarks on the original point cloud</li>
+                <li>Improves local geometric precision</li>
+                <li>Acts as the static-specific stage of the framework</li>
+              </ul>
+            </div>
+
+            <div class="summary-block">
+              <span class="small-label">Key Characteristics</span>
+              <ul>
+                <li>Segment-based local refinement</li>
+                <li>Uses SI-LD prediction as a reliable guide</li>
+                <li>Enhances surface-level landmark accuracy</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <div class="wide-card">
+          <h2 class="section-title">ALTNet and Geodesic Heatmap Design</h2>
+          <p>
+            A key component of the proposed framework is ALTNet, a feature extraction network designed to better capture landmark-oriented geometry. ALTNet extends global-local point cloud representation by explicitly emphasizing the regions surrounding landmarks, which is particularly important for anthropometric landmark detection where subtle local geometric cues matter.
+          </p>
+          <p>
+            In addition, the method uses geodesic heatmap representation rather than simple Euclidean-distance-based labeling. This design is important because human body surfaces undergo non-rigid deformation under pose changes, and geodesic distance better reflects intrinsic surface relationships than straight-line Euclidean distance. Together, ALTNet and geodesic heatmap learning support both the stability of SI-LD and the precision of PI-LD.
+          </p>
+        </div>
+      </div>
+
+      <div class="wide-stack" id="results">
+        <div class="figure-card">
+          <h2 class="section-title">Qualitative and Quantitative Results</h2>
+          <img class="figure-image" src="../assets/publications/paper-01-results.png" alt="Qualitative and quantitative results of the proposed method" />
+          <p class="figure-caption">
+            The proposed framework was designed to show two complementary advantages: consistent landmark prediction under posture variation and improved surface-level precision after local refinement. These two properties are jointly demonstrated through the SI-LD and PI-LD stages.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <div class="content-card">
+            <h2 class="section-title">What the results show</h2>
+            <p>
+              The experimental results demonstrate that the proposed framework is effective not simply because it improves a single accuracy number, but because it addresses two different but related requirements of anthropometric landmark detection. First, SI-LD enables stable landmark estimation under posture variation, making it possible to preserve consistent anatomical correspondence. Second, PI-LD improves the final localization on the input point cloud, which is essential when the goal is to obtain precise landmarks on the actual scan surface.
+            </p>
+            <p>
+              This distinction is important because the paper is not only about outperforming benchmark models in a narrow sense. It is about presenting a more practically useful formulation for 3D landmark detection, especially in scenarios where posture variation and geometric precision must both be considered.
+            </p>
+
+            <h2 class="sub-title">Main contributions of the paper</h2>
+            <ul>
+              <li>Proposed a two-stage landmark detection framework that explicitly separates invariant estimation and precise refinement.</li>
+              <li>Introduced SI-LD to preserve landmark consistency under dynamic posture variation.</li>
+              <li>Introduced PI-LD to refine landmarks directly on the original point cloud for improved precision.</li>
+              <li>Applied ALTNet and geodesic heatmap representation to better support anthropometric landmark reasoning.</li>
+              <li>Demonstrated the practical potential of the method for reliable 3D human body analysis.</li>
+            </ul>
+          </div>
+
+          <aside class="summary-card">
+            <div class="summary-block">
+              <span class="small-label">Why It Matters</span>
+              <p>
+                The proposed method is meaningful because it does not force practitioners to choose between posture robustness and point-level precision. Instead, it provides a structured way to obtain both through a unified framework.
+              </p>
+            </div>
+
+            <div class="summary-block">
+              <span class="small-label">Practical Value</span>
+              <ul>
+                <li>More reliable landmark detection across postures</li>
+                <li>Improved applicability to real human scan data</li>
+                <li>Better support for anthropometric and ergonomic analysis</li>
+                <li>Framework extensibility for broader 3D human understanding tasks</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <div class="wide-card" id="citation">
+          <h2 class="section-title">Citation</h2>
+          <div class="citation-box">
+            J. S. Byun, J. W. Park, J. H. Park, M. H. Cha, J. Y. Kim, and S. I. Cho, “Two-stage Anthropometric Landmark Detection Framework on Human Point Cloud: Dynamic-invariant and Static-specific Strategy,” Engineering Applications of Artificial Intelligence, Accepted, 2026.
+          </div>
+        </div>
       </div>
     </div>
   </section>
